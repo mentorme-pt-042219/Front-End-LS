@@ -2,25 +2,49 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+// import { AppNavigation } from "./AppNavigation";
+import { MemoryRouter as Router, Route, Switch } from "react-router-dom";
+
+import { AppContainer, Navigation, Body, Title } from "./components/containers";
+
+// import { Home } from "./Home";
+// import { Basic } from "./Basic";
+// import { RenderItems } from "./RenderItems";
+// import { RenderItems2 } from "./RenderItems2";
+
+import SideNav1 from './components/SideNav';
+import QAform from './components/QAform';
+
+class App extends React.Component {
+  render() {
+    return (
+      <AppContainer>
+        {/* <Navigation> */}
+          {/* <Title> React SideNav </Title> */}
+          {/* <AppNavigation /> */}
+        {/* </Navigation> */}
+      
+            <Route path="/" component={SideNav1} />
+            <Route path="/QAform" component={QAform}/>
+            {/* <Route path="//renderitems" component={RenderItems} />
+            <Route path="//renderitems2" component={RenderItems2} />
+            <Route path="/" exact component={Home} /> */}
+        
+      
+      </AppContainer>
+    );
+  }
 }
 
-export default App;
+export const createApp = () => {
+  return class SideNavApp extends React.Component {
+    render() {
+      return (
+        <Router>
+          <App />
+        </Router>
+      );
+    }
+  };
+};
