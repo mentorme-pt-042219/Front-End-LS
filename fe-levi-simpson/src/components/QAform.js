@@ -12,6 +12,8 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { connect } from "react-redux";
+import {addQuestion} from "../actions/index";
 
 const styles = theme => ({
   root: {
@@ -44,28 +46,51 @@ const ranges = [
   },
 ];
 
-class InputAdornments extends React.Component {
+class QAform extends React.Component {
   state = {
-    question: '',
-    password: '',
-    weight: '',
-    Topic: '',
+  newQuestion:{
+    user: "",
+    topic:"",
+    text: ""
+
+  }
+
     // showPassword: false,
   };
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
+  handleChange = event => {
+    this.setState(prevState => ({ 
+      
+      newQuestion: {
+      ...prevState.newQuestion,
+      [event.target.name]: event.target.value 
+    
+    }
+    }));
   };
 
+  createNewQ = e => {
+    e.preventDefault();
+    this.props.addQuestion(this.state.newQuestion);
+    this.setState({
+      newQuestion:{
+        user: "",
+        topic:"",
+        text: ""
+      }
+    })
+
+  }
+ 
   // handleClickShowPassword = () => {
   //   this.setState(state => ({ showPassword: !state.showPassword }));
   // };
 
   render() {
-    const { classes } = this.props;
+ 
 
     return (
-      <div className={classes.root}>
+      <div >
         {/* <TextField
           label="Question"
           id="simple-start-adornment"
@@ -75,31 +100,37 @@ class InputAdornments extends React.Component {
           }}
         /> */}
 
-        <TextField
-          select
-          label="Topic"
-          className={classNames(classes.margin, classes.textField)}
-          value={this.state.Topic}
-          onChange={this.handleChange('Topic')}
-          InputProps={{
-            startAdornment: <InputAdornment position="start"></InputAdornment>,
-          }}
-        >
-          {ranges.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <FormControl fullWidth className={classes.margin}>
+<FormControl fullWidth >
           <InputLabel htmlFor="adornment-amount">Question</InputLabel>
           <Input
-            id="adornment-amount"
-            value={this.state.question}
-            onChange={this.handleChange('question')}
+            id="topic"
+            name="topic"
+            value={this.state.newQuestion.user}
+            onChange={this.handleChange}
+            startAdornment={<InputAdornment position="start">user</InputAdornment>}
+          />
+        </FormControl>
+        <FormControl fullWidth >
+          <InputLabel htmlFor="adornment-amount">Question</InputLabel>
+          <Input
+            id="user"
+            name="user"
+            value={this.state.newQuestion.user}
+            onChange={this.handleChange}
+            startAdornment={<InputAdornment position="start">user</InputAdornment>}
+          />
+        </FormControl>
+        <FormControl fullWidth >
+          <InputLabel htmlFor="adornment-amount">Question</InputLabel>
+          <Input
+            id="question"
+            name="text"
+            value={this.state.newQuestion.text}
+            onChange={this.handleChange}
             startAdornment={<InputAdornment position="start">?</InputAdornment>}
           />
         </FormControl>
+        <button>Add Question</button>
         {/* <FormControl
           className={classNames(classes.margin, classes.withoutLabel, classes.textField)}
         >
@@ -140,8 +171,12 @@ class InputAdornments extends React.Component {
   }
 }
 
-InputAdornments.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+function mapStateToProps (state) {
+  return {};
+}
 
-export default withStyles(styles)(InputAdornments);
+export default connect(
+  mapStateToProps,
+  {addQuestion} 
+)(QAform);
+

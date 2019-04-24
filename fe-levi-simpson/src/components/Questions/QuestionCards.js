@@ -22,7 +22,7 @@ class QuestionCards extends React.Component {
         <div className="CardsList_wrapper">
            {/* {this.props.fetchingFriend? <h1>Loading</h1> : null} */}
             <ul>
-            {props.questions.map(question => {
+            {this.props.questions.map(question => {
         return <QCardsList key={question.user} question={question}/>;
       })}
       </ul>

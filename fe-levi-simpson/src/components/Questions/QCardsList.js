@@ -3,10 +3,12 @@ import React from "react";
 const QCardsList = props => {
   return  (
     <div>
+        <ul>
   <li>{props.question.user} </li>
-  <li>{props.question.question}</li>  
+  <li>{props.question.topic} </li>
+  <li>{props.question.text}</li>  
 
-
+  </ul>
               
                 </div>
   

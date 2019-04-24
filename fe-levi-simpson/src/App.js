@@ -15,6 +15,7 @@ import { AppContainer, Navigation, Body, Title } from "./components/containers";
 
 import SideNav1 from './components/SideNav';
 import QAform from './components/QAform';
+import QuestionCards from './components/Questions/QuestionCards';
 
 class App extends React.Component {
   render() {
@@ -26,6 +27,7 @@ class App extends React.Component {
         {/* </Navigation> */}
       
             <Route path="/" component={SideNav1} />
+            <Route path="/QArchives" component={QuestionCards}/>
             <Route path="/QAform" component={QAform}/>
             {/* <Route path="//renderitems" component={RenderItems} />
             <Route path="//renderitems2" component={RenderItems2} />

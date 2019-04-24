@@ -78,7 +78,7 @@ const Text = styled.div`
               <IconCnt>
                 <Icon icon={users} />
               </IconCnt>
-              <Text>Questions Archives</Text>
+              <Link className="link" to="/QArchives">Questions Archives</Link>
             </Nav>
             <Nav id="4">
               <IconCnt>

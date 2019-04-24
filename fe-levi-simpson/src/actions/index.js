@@ -2,6 +2,17 @@ import axios from 'axios';
 import axiosWithAuth from '../utils/AxiosAuth';
 
 
+export const ADD_QUESTION="ADD_QUESTION"
+
+export const addQuestion= (id, user, topic, newQ) => {
+ let question = {id, user, topic, newQ}
+    return{
+     type: ADD_QUESTION,
+     payload: question
+ }
+
+}
+
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -23,7 +34,7 @@ export const login = creds => dispatch => {
 
 export const FETCH_DATA_START = 'FETCH_DATA_START';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
-export const FETCH_DATA = 'FETCH_DATA';
+export const FETCH_FAILURE = 'FETCH_FAILURE';
 
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
