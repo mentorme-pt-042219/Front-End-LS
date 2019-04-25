@@ -23,7 +23,20 @@ const styles = theme => ({
   },
 });
 
-const data = [
+const currencies = [
+  {
+    value: 'Entrepreneur',
+    label: 'Entrepreneur',
+  },
+  {
+    value: 'Volunteer',
+    label: 'Volunteer',
+},
+ 
+];
+
+
+const type = [
   {
     value: 'Sole-Proprietorship',
     label: 'Sole-Proprietorship',
@@ -48,14 +61,19 @@ const data = [
  
 ];
 
-class QAform extends React.Component {
+class VolunteerForm extends React.Component {
   state = {
-  FirstName: "",
-  LastName:"",
-  Type:"",
-  Topic:"",
-  Question:"",
-  Files:""
+    FirstName: "",
+    LastName: "",
+    Company:"",
+    Role:"",
+    Interest:"",
+    Email:"",
+    Years:"",
+    Username:"",
+    Password:"",
+    AboutMe:"",
+    UserImage:""
   };
 
   handleChange = name => event => {
@@ -84,7 +102,7 @@ class QAform extends React.Component {
           label="Last Name"
           className={classes.textField}
           value={this.state.lastName}
-         
+          name="FirstName"
           onChange={this.handleChange('name')}
           margin="normal"
           variant="outlined"
@@ -93,6 +111,7 @@ class QAform extends React.Component {
         <TextField
            id="outlined-name"
            label="Company Name"
+           name="Company"
            value={this.state.company}
            className={classes.textField}
            onChange={this.handleChange('name')}
@@ -101,6 +120,30 @@ class QAform extends React.Component {
         />
 
 <TextField
+          id="outlined-select-currency"
+          select
+          label="Role"
+          name="Role"
+          className={classes.textField}
+          value={this.state.currency}
+          onChange={this.handleChange('currency')}
+          SelectProps={{
+            MenuProps: {
+              className: classes.menu,
+            },
+          }}
+          helperText="Are you a Entrepreneur or Volunteer?"
+          margin="normal"
+          variant="outlined"
+        >
+          {currencies.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <TextField
           id="outlined-select-currency"
           select
           label="Type"
@@ -117,22 +160,81 @@ class QAform extends React.Component {
           margin="normal"
           variant="outlined"
         >
-          {data.map(option => (
+          {type.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
 
-       
+
+        <TextField
+          id="outlined-email-input"
+          label="Email"
+          className={classes.textField}
+          value={this.state.email}
+          onChange={this.handleChange('name')}
+          type="email"
+          name="email"
+        //   autoComplete="email"
+          margin="normal"
+          variant="outlined"
+        />
+
+     
+
+   
+
+        <TextField
+          id="outlined-number"
+          label="Years in Business"
+          value={this.state.age}
+          name="Years"
+          onChange={this.handleChange('age')}
+          type="number"
+          className={classes.textField}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+          variant="outlined"
+        />
+
+        
+<TextField
+          id="outlined-name"
+            label="UserName"
+            value={this.state.topic}
+            name="UserName"
+            className={classes.textField}
+            onChange={this.handleChange('name')}
+            margin="normal"
+            variant="outlined"
+            
+        />
+
+<TextField
+          id="outlined-password-input"
+          label="Password"
+          name="PassWord"
+          value={this.state.topic}
+          className={classes.textField}
+          onChange={this.handleChange('name')}
+          type="password"
+        //   autoComplete="current-password"
+          margin="normal"
+          variant="outlined"
+        />
+
 
        
         <TextField
           id="outlined-full-width"
-          label="Question"
+          label="About Me"
+          name="AboutMe"
           style={{ margin: 8 }}
-          placeholder="Ask Our Volunteer Mentors A Question"
-          helperText="I have a question!"
+          placeholder="Short Description About You"
+          helperText="Sign me up!"
           fullWidth
           margin="normal"
           variant="outlined"
@@ -140,13 +242,14 @@ class QAform extends React.Component {
             shrink: true,
           }}
         />
+
 <input
   accept="image/*"
   className={classes.input}
   style={{ display: 'none' }}
   onChange={this.handleChange('name')}
   value={this.state.topic}
-  name="Files"
+  name="UserImage"
   id="raised-button-file"
   multiple
   type="file"
@@ -154,11 +257,12 @@ class QAform extends React.Component {
 />
 <label htmlFor="raised-button-file">
   <Button variant="raised" component="span" className={classes.button}>
-    Upload Files
+    Upload A Profile Picture
   </Button>
 </label> 
   
       </form>
+     
     );
   }
 }
@@ -167,4 +271,4 @@ class QAform extends React.Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
-export default withStyles(styles)(QAform);
+export default withStyles(styles)(VolunteerForm);

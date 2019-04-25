@@ -10,7 +10,7 @@ import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 // import { createApp } from "./App";
-
+// const App = createApp();
 const store = createStore(reducer, applyMiddleware(thunk));
 window.reduxStore = store;
 

@@ -6,7 +6,7 @@ import './App.css';
 // import { AppNavigation } from "./AppNavigation";
 import { MemoryRouter as Router, Route, Switch } from "react-router-dom";
 
-import { AppContainer, Navigation, Body, Title } from "./components/containers";
+// import { AppContainer, Navigation, Body, Title } from "./components/containers";
 
 // import { Home } from "./Home";
 // import { Basic } from "./Basic";
@@ -22,22 +22,16 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-      {/* <AppContainer> */}
-   
-      <Route path="/" component={TopNav1} />
-          <Route path="/" component={SideNav1} />
+    
+         {/* <Route path="/" component ={TopNav1}/> */}
+         <Route path="/" component ={SideNav1}/>
       <Route path="/QArchives" component={QuestionCards}/>
             <Route path="/QAform" component={QAform}/>
    
-  
-
+           
         
          
-          
-          
-          
-      
-      {/* </AppContainer> */}
+        
       </Router>
     );
   }

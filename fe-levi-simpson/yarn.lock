@@ -8689,11 +8689,6 @@ react-scripts@3.0.0:
   optionalDependencies:
     fsevents "2.0.6"
 
-react-sidenav@^3.1.9:
-  version "3.1.9"
-  resolved "https://registry.yarnpkg.com/react-sidenav/-/react-sidenav-3.1.9.tgz#277f3d9c62ad767861d8512ac482cfe4d982ce9c"
-  integrity sha512-ot2Zqfzd9uNOS6/Hz3lS79G9RqEMWdANWWbULENAnu9ofPnbP8l2nhw7eBS4AmiIyrpDNqwzGcmdJ2S7BAHZ2A==
-
 react-transition-group@^2.2.1:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
