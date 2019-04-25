@@ -47,26 +47,30 @@ const ranges = [
 ];
 
 class QAform extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state={
   newQuestion:{
     user: "",
     topic:"",
     text: ""
-
   }
+  
 
     // showPassword: false,
   };
+  }
 
-  handleChange = event => {
-    this.setState(prevState => ({ 
-      
-      newQuestion: {
-      ...prevState.newQuestion,
-      [event.target.name]: event.target.value 
-    
-    }
-    }));
+  handleChange = e => {
+   
+    let value = e.target.value;
+    this.setState(prevState => ({
+        newQuestion: {
+            ...prevState.newQuestion,
+            [e.target.name]: value
+        }
+      }));
+             
   };
 
   createNewQ = e => {
@@ -78,6 +82,7 @@ class QAform extends React.Component {
         topic:"",
         text: ""
       }
+    
     })
 
   }
@@ -86,90 +91,47 @@ class QAform extends React.Component {
   //   this.setState(state => ({ showPassword: !state.showPassword }));
   // };
 
-  render() {
- 
+  
+      
 
-    return (
-      <div >
-        {/* <TextField
-          label="Question"
-          id="simple-start-adornment"
-          className={classNames(classes.margin, classes.textField)}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-          }}
-        /> */}
+render() {
 
-<FormControl fullWidth >
-          <InputLabel htmlFor="adornment-amount">Question</InputLabel>
-          <Input
-            id="topic"
-            name="topic"
-            value={this.state.newQuestion.user}
-            onChange={this.handleChange}
-            startAdornment={<InputAdornment position="start">user</InputAdornment>}
-          />
-        </FormControl>
-        <FormControl fullWidth >
-          <InputLabel htmlFor="adornment-amount">Question</InputLabel>
-          <Input
-            id="user"
-            name="user"
-            value={this.state.newQuestion.user}
-            onChange={this.handleChange}
-            startAdornment={<InputAdornment position="start">user</InputAdornment>}
-          />
-        </FormControl>
-        <FormControl fullWidth >
-          <InputLabel htmlFor="adornment-amount">Question</InputLabel>
-          <Input
-            id="question"
-            name="text"
-            value={this.state.newQuestion.text}
-            onChange={this.handleChange}
-            startAdornment={<InputAdornment position="start">?</InputAdornment>}
-          />
-        </FormControl>
-        <button>Add Question</button>
-        {/* <FormControl
-          className={classNames(classes.margin, classes.withoutLabel, classes.textField)}
-        >
-          <Input
-            id="adornment-weight"
-            value={this.state.weight}
-            onChange={this.handleChange('weight')}
-            aria-describedby="weight-helper-text"
-            endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
-            inputProps={{
-              'aria-label': 'Weight',
-            }}
-          /> */}
+return (
+  <div>
+    <form>
+    <input
+        type="text"
+        name="user"
+        placeholder="user"
+        value={this.state.newQuestion.user}
+        onChange={this.handleChange}
+    />
+     <input
+         type="text"
+         name="topic"
+         placeholder="topic"
+         value={this.state.newQuestion.topic}
+         onChange={this.handleChange}
+    />
+     <input
+       type="text"
+       name="text"
+       placeholder="text"
+       value={this.state.newQuestion.text}
+       onChange={this.handleChange}
+    />
+  
+   
+    </form>
 
-          {/* <FormHelperText id="weight-helper-text">Weight</FormHelperText>
-        </FormControl>
-        <FormControl className={classNames(classes.margin, classes.textField)}>
-          <InputLabel htmlFor="adornment-password">Password</InputLabel>
-          <Input
-            id="adornment-password"
-            type={this.state.showPassword ? 'text' : 'password'}
-            value={this.state.password}
-            onChange={this.handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="Toggle password visibility"
-                  onClick={this.handleClickShowPassword}
-                >
-                  {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl> */}
-      </div>
-    );
-  }
+    <button onClick={this.createNewQ} type="submit">Add Question</button>
+    </div>
+       
+)}
 }
+        
+       
+
 
 function mapStateToProps (state) {
   return {};

@@ -79,8 +79,8 @@ const initialState = {
           return { ...state, error:""}
 
          case ADD_QUESTION:
-         let newQuestion= {id:"", user: "", topic: "", text: ""};
-         return {...state,  questions: [...state.questions, newQuestion]};
+        
+         return {...state,  questions: [...state.questions, action.payload]};
 
       default:
         return state;

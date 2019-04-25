@@ -4,11 +4,12 @@ import axiosWithAuth from '../utils/AxiosAuth';
 
 export const ADD_QUESTION="ADD_QUESTION"
 
-export const addQuestion= (id, user, topic, newQ) => {
- let question = {id, user, topic, newQ}
+export const addQuestion= (id, user, topic, name) => {
+    
+let newQ = {id, user, topic, name};
     return{
      type: ADD_QUESTION,
-     payload: question
+     payload: newQ
  }
 
 }

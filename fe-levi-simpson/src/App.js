@@ -14,39 +14,45 @@ import { AppContainer, Navigation, Body, Title } from "./components/containers";
 // import { RenderItems2 } from "./RenderItems2";
 
 import SideNav1 from './components/SideNav';
+import TopNav1 from "./components/TopNav1";
 import QAform from './components/QAform';
 import QuestionCards from './components/Questions/QuestionCards';
 
 class App extends React.Component {
   render() {
     return (
-      <AppContainer>
-        {/* <Navigation> */}
-          {/* <Title> React SideNav </Title> */}
-          {/* <AppNavigation /> */}
-        {/* </Navigation> */}
-      
-            <Route path="/" component={SideNav1} />
-            <Route path="/QArchives" component={QuestionCards}/>
+      <Router>
+      {/* <AppContainer> */}
+   
+      <Route path="/" component={TopNav1} />
+          <Route path="/" component={SideNav1} />
+      <Route path="/QArchives" component={QuestionCards}/>
             <Route path="/QAform" component={QAform}/>
-            {/* <Route path="//renderitems" component={RenderItems} />
-            <Route path="//renderitems2" component={RenderItems2} />
-            <Route path="/" exact component={Home} /> */}
+   
+  
+
         
+         
+          
+          
+          
       
-      </AppContainer>
+      {/* </AppContainer> */}
+      </Router>
     );
   }
 }
 
-export const createApp = () => {
-  return class SideNavApp extends React.Component {
-    render() {
-      return (
-        <Router>
-          <App />
-        </Router>
-      );
-    }
-  };
-};
+// export const createApp = () => {
+//   return class SideNavApp extends React.Component {
+//     render() {
+//       return (
+//         <Router>
+//           <App />
+//         </Router>
+//       );
+//     }
+//   };
+// }
+
+export default App;

@@ -8,14 +8,14 @@ import thunk from 'redux-thunk';
 // import logger from "redux-logger";
 
 import './index.css';
-// import App from './App';
-import { createApp } from "./App";
+import App from './App';
+// import { createApp } from "./App";
 
 const store = createStore(reducer, applyMiddleware(thunk));
 window.reduxStore = store;
 
 
-const App = createApp();
+// const App = createApp();
 ReactDOM.render(
 <Provider store={store}>
 <App />

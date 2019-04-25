@@ -100,7 +100,7 @@ const Text = styled.div`
             </Nav>
           </SideNav>
         </Navigation>
-     
+       
       </AppContainer>
     );
   }
