@@ -50,10 +50,9 @@ const data = [
 
 class QAform extends React.Component {
   state = {
-  FirstName: "",
-  LastName:"",
+Username:"",
+  Title:"",
   Type:"",
-  Topic:"",
   Question:"",
   Files:""
   };
@@ -71,7 +70,7 @@ class QAform extends React.Component {
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
        id="outlined-name"
-          label="First Name"
+          label="User Name"
           className={classes.textField}
           value={this.state.name}
           onChange={this.handleChange('name')}
@@ -79,25 +78,17 @@ class QAform extends React.Component {
           variant="outlined"
         />
 
-        <TextField
-          id="outlined-name"
-          label="Last Name"
-          className={classes.textField}
-          value={this.state.lastName}
-         
-          onChange={this.handleChange('name')}
-          margin="normal"
-          variant="outlined"
-        />
+      
 
         <TextField
            id="outlined-name"
-           label="Company Name"
+           label="Title"
            value={this.state.company}
            className={classes.textField}
            onChange={this.handleChange('name')}
            margin="normal"
            variant="outlined"
+           helperText="Required*: Title Of Question"
         />
 
 <TextField

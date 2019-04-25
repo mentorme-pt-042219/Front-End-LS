@@ -30,7 +30,7 @@ function UserCards(props) {
           className={classes.media}
           height="140"
           image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          title="User Profile Pic"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
