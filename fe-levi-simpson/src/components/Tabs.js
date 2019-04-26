@@ -53,9 +53,9 @@ class NavTabs extends React.Component {
         <div className={classes.root}>
           <AppBar position="static">
             <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-              <LinkTab label="Entrepreneur" href="page1" />
-              <LinkTab label="Volunteer" href="page2" />
-              <LinkTab label="Ask A Question" href="page4" />
+              <LinkTab label="Entrepreneurs" href="page1" />
+              <LinkTab label="Mentors" href="page2" />
+              <LinkTab label="Ask A Mentor" href="page4" />
               <LinkTab label="Questions Archives" href="page5" />
               <LinkTab label="Users" href="page6" />
            

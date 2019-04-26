@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+
 
 const styles = theme => ({
   container: {
@@ -67,6 +70,11 @@ Username:"",
     const { classes } = this.props;
 
     return (
+<div>
+      <Typography gutterBottom variant="h6">
+      ASK A MENTOR
+      </Typography>
+       <Divider variant="middle" />
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
        id="outlined-name"
@@ -150,6 +158,7 @@ Username:"",
 </label> 
   
       </form>
+      </div>
     );
   }
 }

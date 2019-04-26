@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   container: {
@@ -87,6 +89,12 @@ class BusinessForm extends React.Component {
     const { classes } = this.props;
 
     return (
+      <div>
+      <Typography gutterBottom variant="h6">
+            ENTREPRENEUR REGISTRATION
+            </Typography>
+     <Divider variant="middle" />
+
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
        id="outlined-name"
@@ -270,12 +278,11 @@ class BusinessForm extends React.Component {
   </Button>
 </label> 
       </form>
+      </div>
     );
   }
 }
 
-// OutlinedTextFields.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+
 
 export default withStyles(styles)(BusinessForm);

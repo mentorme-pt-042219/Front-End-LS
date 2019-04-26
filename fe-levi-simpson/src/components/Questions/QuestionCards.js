@@ -18,7 +18,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CommentSection from './CommentSection';
 import QSearchBar from './QSearchBar';
-
+import Divider from '@material-ui/core/Divider';
 
 
 const styles = theme => ({
@@ -63,11 +63,12 @@ class QCards extends React.Component {
       <div>
         
       <QSearchBar/>
-      <Card className={classes.card}>
+      <Divider variant="middle" />
+      <Card  className={classes.card}>
         <CardHeader
           avatar={
             <Avatar aria-label="Recipe" className={classes.avatar}>
-              F
+              E
             </Avatar>
           }
           action={
@@ -75,13 +76,15 @@ class QCards extends React.Component {
               <MoreVertIcon />
             </IconButton>
           }
-          title="Shrimp and Chorizo Paella"
+          title="Whats the best way to find Investors?"
+         
           subheader="September 14, 2016"
         />
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/paella.jpg"
+      
           title="Paella dish"
+          image='https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
         />
         <CardContent>
           {/* <Typography component="p">
@@ -109,7 +112,7 @@ class QCards extends React.Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Method:</Typography>
+            <Typography paragraph>Mary Allen:</Typography>
             <Typography paragraph>
               Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
               minutes.

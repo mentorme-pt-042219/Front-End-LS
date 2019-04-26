@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
 
 export const AppContainer = styled.div`
   display: flex;
@@ -42,3 +43,28 @@ export const ExampleBody = styled.div`
   padding: 12px;
   border: 1px solid rgba(0, 0, 0, 0.125);
 `;
+
+
+export const TopNavG= styled.div`
+    background: 	#9370DB;
+    color: #F8FFF8;
+`;
+
+ export const whiteButtons = styled(Button)`
+   color: white;
+`;
+
+
+
+// function StyledComponents() {
+//   return (
+//     <div>
+//       <Button>
+//         Material-UI
+//       </Button>
+//       <TopNav2>
+//         Styled Components
+//       </TopNav2>
+//     </div>
+//   );
+// }
