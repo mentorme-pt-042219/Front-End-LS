@@ -46,12 +46,29 @@ export const ExampleBody = styled.div`
 
 
 export const TopNavG= styled.div`
-    background: 	#9370DB;
-    color: #F8FFF8;
+background: #0B0C10;
+color: #66FCF1;
+  
 `;
 
+
+export const TopNavH= styled.div`
+    background: #0B0C10;
+    color: #66FCF1;
+    height: 100vh;
+    width: 100%;
+`;
+
+
+export const TopNavD= styled.div`
+    background: #212121;
+    color: #424242;
+  
+`;
+
+
  export const whiteButtons = styled(Button)`
-   color: white;
+ color: #66FCF1;
 `;
 
 

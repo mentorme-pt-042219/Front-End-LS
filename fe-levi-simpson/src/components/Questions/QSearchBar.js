@@ -1,56 +1,73 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Search from '@material-ui/icons/Search'
+import InputAdornment from '@material-ui/core/InputAdornment';
 
-class QSearchBar extends React.Component {
+export default class QSearchBar extends React.Component {
   state = {
     open: false,
-    vertical: 'top',
-    horizontal: 'center',
   };
 
-  handleClick = state => () => {
-    this.setState({ open: true, ...state });
+  handleClickOpen = () => {
+    this.setState({ open: true });
   };
 
   handleClose = () => {
     this.setState({ open: false });
   };
 
+
+
   render() {
-    const { vertical, horizontal, open } = this.state;
     return (
       <div>
-        {/* <Button onClick={this.handleClick({ vertical: 'top', horizontal: 'center' })}>
-          Top-Center
-        </Button> */}
-        {/* <Button onClick={this.handleClick({ vertical: 'top', horizontal: 'right' })}>
-          Top-Right
-        </Button> */}
-        <Button onClick={this.handleClick({ vertical: 'bottom', horizontal: 'right' })}>
-          Search Archived Questions
+        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+          Search Previously Asked Questions
         </Button>
-        {/* <Button onClick={this.handleClick({ vertical: 'bottom', horizontal: 'center' })}>
-          Bottom-Center
-        </Button>
-        <Button onClick={this.handleClick({ vertical: 'bottom', horizontal: 'left' })}>
-          Bottom-Left
-        </Button>
-        <Button onClick={this.handleClick({ vertical: 'top', horizontal: 'left' })}>
-          Top-Left
-        </Button> */}
-        <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          open={open}
+        <Dialog
+          open={this.state.open}
           onClose={this.handleClose}
-          ContentProps={{
-            'aria-describedby': 'message-id',
+          aria-labelledby="form-dialog-title"
+        >
+          {/* <DialogTitle id="form-dialog-title">Subscribe</DialogTitle> */}
+          <DialogContent>
+            <DialogContentText>
+             Search Archives Based on Key Words or Titles!
+            </DialogContentText>
+            <TextField
+          id="outlined-full-width"
+          // label="Label"
+          style={{ margin: 8 }}
+          placeholder="Search Questions"
+          // helperText="Search Archives based on Key Words or Titles!"
+          fullWidth
+          margin="normal"
+          variant="outlined"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+               <Search/>
+              </InputAdornment>
+            ),
           }}
-          message={<span id="message-id">Search Questions</span>}
         />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+             Search
+            </Button>
+            <Button onClick={this.handleClose} color="primary">
+           Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
 }
-
-export default QSearchBar;

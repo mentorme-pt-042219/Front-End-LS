@@ -19,6 +19,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CommentSection from './CommentSection';
 import QSearchBar from './QSearchBar';
 import Divider from '@material-ui/core/Divider';
+import FilterTabs from './FilterTabs';
+import grey from '@material-ui/core/colors/grey';
 
 
 const styles = theme => ({
@@ -42,9 +44,11 @@ const styles = theme => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  avatar: {
-    backgroundColor: red[500],
-  },
+ 
+    avatar: {
+      color: grey[900],
+    },
+  
 });
 
 class QCards extends React.Component {
@@ -63,6 +67,7 @@ class QCards extends React.Component {
       <div>
         
       <QSearchBar/>
+      <FilterTabs/>
       <Divider variant="middle" />
       <Card  className={classes.card}>
         <CardHeader

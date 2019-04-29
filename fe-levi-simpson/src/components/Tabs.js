@@ -11,6 +11,29 @@ import QAform from '../components/QAform';
 import VolunteerForm from './Users/VolunteerForm';
 import QCards from './Questions/QuestionCards';
 import UserCards from './Users/UserCards';
+import grey from '@material-ui/core/colors/grey';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+
+import Home from '@material-ui/icons/Home';
+import HowToReg from '@material-ui/icons/HowToReg';
+import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
+import NotificationImportant from '@material-ui/icons/NotificationImportant';
+import SupervisedUserCircle from '@material-ui/icons/SupervisedUserCircle';
+import PhonelinkRing from '@material-ui/icons/PhonelinkRing';
+import Search from '@material-ui/icons/Search';
+
+const outerTheme1 = createMuiTheme({
+  palette: {
+    primary: {
+      main: grey[800],
+    },
+    secondary: {
+      main: '#eeeeee',
+    },
+  },
+  typography: { useNextVariants: true },
+});
+
 
 function TabContainer(props) {
   return (
@@ -51,16 +74,18 @@ class NavTabs extends React.Component {
     return (
       <NoSsr>
         <div className={classes.root}>
+
           <AppBar position="static">
             <Tabs variant="fullWidth" value={value} onChange={this.handleChange}>
-              <LinkTab label="Entrepreneurs" href="page1" />
-              <LinkTab label="Mentors" href="page2" />
-              <LinkTab label="Ask A Mentor" href="page4" />
-              <LinkTab label="Questions Archives" href="page5" />
-              <LinkTab label="Users" href="page6" />
+              <LinkTab label="Entrepreneur Register" icon={<HowToReg/>} href="page1" />
+              <LinkTab label="Mentor Register"  icon={<HowToReg/>} href="page2" />
+              <LinkTab label="Ask A Mentor" icon={<QuestionAnswer/>} href="page4" />
+              <LinkTab label="Questions Archives" icon={<Search/>} href="page5" />
+              <LinkTab label="Directory" icon={<SupervisedUserCircle/>} href="page6" />
            
             </Tabs>
           </AppBar>
+       
           {value === 0 && <TabContainer><BusinessForm/></TabContainer>}
           {value === 1 && <TabContainer><VolunteerForm/></TabContainer>}
           {value === 2 && <TabContainer><QAform/></TabContainer>}

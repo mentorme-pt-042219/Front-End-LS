@@ -16,29 +16,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-
-const outerTheme = createMuiTheme({
-    palette: {
-      primary: {
-        main: purple[500],
-      },
-    },
-    typography: { useNextVariants: true },
-  });
-
-  const outerTheme4 = createMuiTheme({
-    "palette":{"common":{"black":"#000","white":"#fff"},"background":
-    {"paper":"#fff","default":"#fafafa"},"primary":{"light":"#7986cb",
-        "main":"rgba(80, 227, 194, 1)","dark":"#303f9f","contrastText":"#fff"},
-        "secondary":{"light":"#ff4081","main":"#f50057","dark":"#c51162",
-            "contrastText":"#fff"},"error":{"light":"#e57373","main":"#f44336",
-                "dark":"#d32f2f","contrastText":"#fff"},
-                "text":{"primary":"rgba(0, 0, 0, 0.87)",
-                    "secondary":"rgba(0, 0, 0, 0.54)","disabled":"rgba(0, 0, 0, 0.38)",
-                    "hint":"rgba(0, 0, 0, 0.38)"}}
-  })
 
 const styles = theme => ({
   root: {
@@ -110,7 +87,7 @@ const styles = theme => ({
   },
 });
 
-class TopNav1 extends React.Component {
+class TopAppBar extends React.Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
@@ -187,7 +164,6 @@ class TopNav1 extends React.Component {
 
     return (
       <div className={classes.root}>
-     <MuiThemeProvider theme={outerTheme4}>
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
@@ -236,7 +212,6 @@ class TopNav1 extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
-        </MuiThemeProvider>
         {renderMenu}
         {renderMobileMenu}
       </div>
@@ -244,8 +219,8 @@ class TopNav1 extends React.Component {
   }
 }
 
-// PrimarySearchAppBar.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+TopAppBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default withStyles(styles)(TopNav1);
+export default withStyles(styles)(TopAppBar);
