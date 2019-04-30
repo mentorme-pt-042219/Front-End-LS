@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from "./reducers/index";
+import rootReducer from "./reducers/index";
 import thunk from 'redux-thunk';
-// import logger from "redux-logger";
+import logger from "redux-logger";
 
 import './index.css';
 import App from './App';
 // import { createApp } from "./App";
 // const App = createApp();
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 window.reduxStore = store;
 
 

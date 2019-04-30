@@ -39,9 +39,10 @@ export const FETCH_FAILURE = 'FETCH_FAILURE';
 
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
-  axiosWithAuth()
-    .get('http://localhost:5000/api/friends')
+ return axios 
+    .get('https://deployment-pt3-oliver.herokuapp.com')
     .then(res => {
+      console.log('res',res)
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => {

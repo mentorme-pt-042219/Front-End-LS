@@ -2,10 +2,12 @@ import {LOGIN_START, LOGIN_SUCCESS, FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_
     LOAD_NEW_FRIEND, NEW_FRIEND_SUCCESS, ADD_QUESTION, FETCH_FRIEND_UPDATE, FRIEND_UPDATE_SUCCESS, LOAD_DELETE_FRIEND, DELETE_FRIEND_SUCCESS} from "../actions/index";
 
 const initialState = {
-   questions: [{id:1, user: "BobSmith" , topic:"Marketing", text: "How do increase my social media influence?" }, 
-   {id:2, user: "JohnWells", topic:"Finance", text: "What if I don't qualify for a business loan?"}],
-    // loggingIn: false,
+  //  questions: [{id:1, user: "BobSmith" , topic:"Marketing", text: "How do increase my social media influence?" }, 
+  //  {id:2, user: "JohnWells", topic:"Finance", text: "What if I don't qualify for a business loan?"}],
+  //   // loggingIn: false,
     error: "",
+    fethcingMessage: false,
+    message: [],
  
    };
  
@@ -29,7 +31,7 @@ const initialState = {
         return {
           ...state,
           error: '',
-          fetchingFriends: true,
+          fetchingMessage: true,
           errorStatusCode: null
         };
       case FETCH_DATA_SUCCESS:
@@ -37,14 +39,14 @@ const initialState = {
           ...state,
           error: '',
           errorStatusCode: null,
-          fetchingFriends: false,
-          friends: action.payload
+          fetchingMessage: false,
+         message: action.payload
         
         };
       case FETCH_FAILURE:
         return {
           ...state,
-          fetchingFriends: false,
+          fetchingMessage: false,
           error: action.payload.data.error,
           errorStatusCode: action.payload.status
         };

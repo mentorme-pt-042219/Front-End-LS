@@ -23,6 +23,7 @@ import {TopNavH} from './components/containers';
 import UserCards from './components/Users/UserCards';
 import VolunteerForm from './components/Users/VolunteerForm';
 import BusinessForm from './components/Users/BusinessForm';
+import UserView from './components/Users/UserView';
 
 // const outerTheme4 = createMuiTheme({
 //   "palette":{"common":{"black":"#000","white":"#fff"},"background":{"paper":"rgba(155, 155, 155, 0.1)",
@@ -50,6 +51,7 @@ class App extends React.Component {
       <Route  path="/QArchives" component={QuestionCards}/>
             <Route  path="/QAform" component={QAform}/>
             <Route  path="/Users" component={UserCards}/>
+            <Route path="/UserView" component={UserView}/>
           
            
           

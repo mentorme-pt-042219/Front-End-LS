@@ -50,7 +50,13 @@ const styles = theme => ({
 });
 
 class UserCards extends React.Component {
-  state = { expanded: false };
+  constructor(props) {
+    super(props);
+  this.state = { 
+    
+    expanded: false };
+
+}
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
@@ -58,7 +64,7 @@ class UserCards extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    console.log(this.props.message);
     return (
    
 
@@ -80,7 +86,7 @@ class UserCards extends React.Component {
               <MoreVertIcon />
             </IconButton>
           }
-          title='Frank Jones'
+          title={this.props.message}
           subheader="LLC, Mentor"
         />
         
@@ -118,8 +124,7 @@ class UserCards extends React.Component {
           <CardContent>
             <Typography gutterBottom variant="h8">FRANK JONES:</Typography>
             <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-              minutes.
+            {this.props.message}
             </Typography>
             <Typography paragraph>
               Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
@@ -207,8 +212,17 @@ class UserCards extends React.Component {
 }
 
 
+// const mstp = state => {
+//   return {
+//    message: state.message,
+//     fetchingFriend: state.fetchingFriend
+//   }
+// }
+
 // QCards.propTypes = {
 //   classes: PropTypes.object.isRequired,
 // };
+
+// export default connect(mstp, mapDispatchToProps)(withStyles(styles)(UserCards));
 
 export default withStyles(styles)(UserCards);
