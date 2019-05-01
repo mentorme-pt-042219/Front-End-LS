@@ -23,10 +23,11 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const login = creds => dispatch => {
     dispatch({type: LOGIN_START});
     return axios
-    .post('http://localhost:5000/api/friends', creds)
+    .post('https://mentor-mee.herokuapp.com/auth/login', creds)
     .then(res => {
-        localStorage.setItem('token', res.data.payload );
-        dispatch({type: LOGIN_SUCCESS, payload: res.data.payload});
+       
+        dispatch({type: LOGIN_SUCCESS, payload: res.data.token});
+        localStorage.setItem('token', res.data.token );
     })
     .catch(err => console.log(err));
 };
@@ -40,7 +41,7 @@ export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const getData = (id) => dispatch => {
   dispatch({ type: FETCH_DATA_START });
   axiosWithAuth()
-    .get('http://localhost:5000/api/friends')
+    .get('https://mentor-mee.herokuapp.com/users')
     .then(res => {
       console.log('this is res',res)
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
@@ -58,7 +59,7 @@ export const NEW_FRIEND_SUCCESS='NEW_FRIEND_SUCCESS';
 export const postMessage = (data) => dispatch=> {
   dispatch({type:LOAD_NEW_FRIEND});
   axiosWithAuth()
-.post('http://localhost:5000/api/friends', data)
+.post('https://mentor-mee.herokuapp.com/users', data)
 .then(res =>{
 console.log("resolved:", res);
 dispatch({type: NEW_FRIEND_SUCCESS, payload: data})
@@ -67,6 +68,8 @@ dispatch({type: NEW_FRIEND_SUCCESS, payload: data})
 
 
 };
+
+
 
 
 export const FETCH_FRIEND_UPDATE = "LOAD_FRIEND_UPDATE";
@@ -97,3 +100,47 @@ dispatch({type: LOAD_DELETE_FRIEND});
   .catch(err => console.log(err));
 
 }
+
+//////QUESTIONS
+
+export const FETCH_QUESTION_LOAD = 'FETCH_QUESTION_LOAD';
+export const FETCH_QUESTION_SUCCESS = 'FETCH_QUESTION_SUCCESS';
+export const FETCH_QUESTION_ERROR ='FETCH_QUESTION_ERROR';
+export const getQuestion = () => dispatch => {
+  dispatch({ type: FETCH_QUESTION_LOAD });
+  axiosWithAuth()
+    .get('https://mentor-mee.herokuapp.com/questions')
+    .then(res => {
+      console.log('this is res',res)
+      dispatch({ type: FETCH_QUESTION_SUCCESS, payload: res.data });
+     
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: FETCH_QUESTION_ERROR, payload: err.response });
+    });
+};
+
+export const FILTER_QUESTION = "FILTER_QUESTION"
+export const filterQuestion = Q => {
+  return {
+    type: FILTER_QUESTION,
+    payload: Q
+  };
+};
+
+export const  ADD_QUESTION_LOAD= ' ADD_QUESTION_LOAD';
+export const ADD_QUESTION_SUCCESS='ADD_QUESTION_SUCCESS';
+
+export const postQuestion = (data) => dispatch=> {
+  dispatch({type:ADD_QUESTION_LOAD});
+  axiosWithAuth()
+.post('https://mentor-mee.herokuapp.com/questions', data)
+.then(res =>{
+console.log("resolved:", res);
+dispatch({type: ADD_QUESTION_SUCCESS, payload: res.data})
+})
+.catch(err =>console.log(err));
+
+
+};

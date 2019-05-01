@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import axiosWithAuth from '../utils/AxiosAuth';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux";
-import {postMessage} from "../actions/index";
+import {postQuestion, getQuestion} from '../actions/index';
 import { withRouter } from 'react-router'
 
 const styles = theme => ({
@@ -29,41 +29,33 @@ const styles = theme => ({
   },
 });
 
-const data = [
-  {
-    value: 'Sole-Proprietorship',
-    label: 'Sole-Proprietorship',
-  },
-
-  {
-    value: 'Partnership',
-    label: 'Partnership',
-  },
-  {
-  value: 'Corporation',
-  label: 'Corporation',
-},
-{
-  value: 'LLC',
-  label: 'LLC',
-},
-{
-  value: 'Cooperative',
-  label: 'Cooperative',
-},
- 
-];
 
 class QAform extends React.Component {
   state = {
     newQuestion:{
-name:"",
 
- email:"",
+title:"",
+body:"",
+author: "",
+FK_user_id:null
   // Files:"",
 }
   }
 
+  componentDidMount() {
+    axiosWithAuth()
+      .get('https://mentor-mee.herokuapp.com/auth/decode')
+      .then(res =>
+        this.setState(prevState => ({
+          newQuestion: {
+            ...prevState.newQuestion,
+            author: res.data.handle,
+            FK_user_id: res.data.subject
+          }
+        }))
+      )
+      .catch(err => console.log(err));
+  }
 
 handleChange = e => {
   e.persist();
@@ -76,16 +68,22 @@ handleChange = e => {
     }));
 };
 
-postMessage = e => {
+componentWillUnmount() {
+  this.props.getQuestion();
+}
+
+postQuestion = e => {
   e.preventDefault();
-     this.props.postMessage(this.state.newQuestion);
+     this.props.postQuestion(this.state.newQuestion);
      this.setState({
          newQuestion: {
-            name: "",
-            email: ""
+        
+          title:"",
+          body:"",
+       
          }
      });
-     this.props.history.push('/protected');
+     this.props.history.push('/QArchives');
     };
  
     render() {
@@ -97,17 +95,50 @@ postMessage = e => {
       ASK A MENTOR
       </Typography>
        <Divider variant="middle" />
-      <form className={classes.container} noValidate autoComplete="off">
+      <form onSubmit={this.postQuestion} className={classes.container} noValidate autoComplete="off">
         <TextField
        id="outlined-name"
-          label="User Name"
-          name="name"
+          label="title"
+          name="title"
           className={classes.textField}
-          value={this.state.name}
+          value={this.state.newQuestion.title}
           onChange={this.handleChange}
           margin="normal"
           variant="outlined"
         />
+
+<TextField
+       id="outlined-name"
+          label="body"
+          name="body"
+          className={classes.textField}
+          value={this.state.newQuestion.body}
+          onChange={this.handleChange}
+          margin="normal"
+          variant="outlined"
+        />
+
+{/* <TextField
+       id="outlined-name"
+          label="author"
+          name="author"
+          className={classes.textField}
+          value={this.state.newQuestion.author}
+          onChange={this.handleChange}
+          margin="normal"
+          variant="outlined"
+        /> */}
+
+{/* <TextField
+       id="outlined-name"
+          label="user_id"
+          name="user_id"
+          className={classes.textField}
+          value={this.state.newQuestion.author}
+          onChange={this.handleChange}
+          margin="normal"
+          variant="outlined"
+        /> */}
 
 {/* <TextField
           id="outlined-select-currency"
@@ -133,16 +164,7 @@ postMessage = e => {
           ))}
         </TextField> */}
 
-<TextField
-       id="outlined-name"
-          label="User Name"
-          name="email"
-          className={classes.textField}
-          value={this.state.email}
-          onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
-        />
+
     
 {/* <input
   accept="image/*"
@@ -161,7 +183,7 @@ postMessage = e => {
     Upload Files
   </Button>
 </label>  */}
-  <button onClick={this.postMessage} type="submit"> Add Question</button>
+  <button onClick={this.postQuestion} type="submit"> Add Question</button>
       </form>
       </div>
     );
@@ -169,13 +191,12 @@ postMessage = e => {
 
 }
 
-function mapStateToProps (state) {
-  return {};
-}
-
-const QAform1 = withRouter(QAform);
-
 export default connect(
-  mapStateToProps,
-  {postMessage } 
-)((withStyles(styles)(QAform1)));
+  null,
+  {postQuestion, getQuestion}
+)((withStyles)(styles)(QAform));
+
+// export default connect(
+//   mapStateToProps,
+//   {postQuestion, getQuestion} 
+// )((withStyles(styles)(QAform1)));

@@ -22,7 +22,7 @@ import QuestionCards from './components/Questions/QuestionCards'
 import {TopNavH} from './components/containers';
 import UserCards from './components/Users/UserCards';
 import VolunteerForm from './components/Users/VolunteerForm';
-import BusinessForm from './components/Users/BusinessForm';
+import BusinessForm1 from './components/Users/BusinessForm';
 import UserView from './components/Users/UserView';
 
 
@@ -41,7 +41,7 @@ class App extends React.Component {
          <Route path="/" component ={SideNav1}/>
          <Route path="/login" component={Login} />
          <Route  path="/home" component={Home}/>
-         <Route  path="/Eform" component={BusinessForm}/>
+         <Route  path="/Eform" component={BusinessForm1}/>
          <Route  path="/Mform" component={VolunteerForm}/>
       <Route  path="/QArchives" component={QuestionCards}/>
             <Route  path="/QAform" component={QAform1}/>

@@ -7,6 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import { withRouter } from 'react-router'
+import { connect } from "react-redux";
+import {postMessage} from "../../actions/index";
 
 const styles = theme => ({
   container: {
@@ -73,101 +76,90 @@ const type = [
 
 class BusinessForm extends React.Component {
   state = {
-   FirstName: "",
-    LastName: "",
-    Company:"",
-    Role:"",
-    Type:"",
-    Email:"",
-    Years:"",
-    Username:"",
-    Password:"",
-    AboutMe:"",
-    UserImage:""
-  };
+    newUser:{
+handle:"",
+email:"",
+password:""
+  // Files:"",
+}
+  }
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
 
-  render() {
+handleChange = e => {
+  e.persist();
+  let value = e.target.value;
+  this.setState(prevState => ({
+      newUser: {
+          ...prevState.newUser,
+          [e.target.name]: value
+      }
+    }));
+};
+
+postMessage = e => {
+  e.preventDefault();
+     this.props.postMessage(this.state.newUser);
+     this.setState({
+         newUser: {
+       handle: "",
+         email:"",
+         password: ""
+         }
+     });
+     this.props.history.push('/protected');
+    };
+ 
+    render() {
     const { classes } = this.props;
 
     return (
-      <div mx="auto">
-      <Typography mx="auto" variant="h6">
-            ENTREPRENEUR REGISTRATION
-            </Typography>
-     <Divider variant="middle" />
-
+<div>
+      <Typography gutterBottom variant="h6">
+   NEW USER REGISTER
+      </Typography>
+       <Divider variant="middle" />
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
        id="outlined-name"
-          label="First Name"
-          name="FirstName"
+          label="UserName"
+          name="handle"
           className={classes.textField}
-          value={this.state.name}
+          value={this.state.handle}
           onChange={this.handleChange}
           margin="normal"
           variant="outlined"
         />
 
-        <TextField
-          id="outlined-name"
-          label="Last Name"
+<TextField
+       id="outlined-name"
+          label="email"
+          name="email"
           className={classes.textField}
-          value={this.state.lastName}
-          name="LastName"
-          onChange={this.handleChange('name')}
+          value={this.state.email}
+          onChange={this.handleChange}
           margin="normal"
           variant="outlined"
-        />
-
-        <TextField
-           id="outlined-name"
-           label="Company Name"
-           value={this.state.company}
-           name="Company"
-           className={classes.textField}
-           onChange={this.handleChange('name')}
-           margin="normal"
-           variant="outlined"
         />
 
 <TextField
-          id="outlined-select-currency"
-          select
-          label="Role"
+       id="outlined-name"
+          label="password"
+          name="password"
           className={classes.textField}
-          value={this.state.currency}
-          name="Role"
-          onChange={this.handleChange('currency')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Are you a Entrepreneur or Volunteer?"
+          value={this.state.password}
+          onChange={this.handleChange}
           margin="normal"
           variant="outlined"
-        >
-          {currencies.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
+        />
 
-        <TextField
+{/* <TextField
           id="outlined-select-currency"
           select
           label="Type"
           className={classes.textField}
-          value={this.state.currency}
+          value={this.state.Type}
           name="Type"
-          onChange={this.handleChange('currency')}
+          onChange={this.handleChange}
           SelectProps={{
             MenuProps: {
               className: classes.menu,
@@ -177,103 +169,22 @@ class BusinessForm extends React.Component {
           margin="normal"
           variant="outlined"
         >
-          {type.map(option => (
+          {data.map(option => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
-        </TextField>
+        </TextField> */}
 
 
-     
-
-      
-
-        <TextField
-          id="outlined-email-input"
-          label="Email"
-          className={classes.textField}
-          value={this.state.email}
-          name="Email"
-          onChange={this.handleChange('name')}
-          type="email"
-          name="email"
-        //   autoComplete="email"
-          margin="normal"
-          variant="outlined"
-        />
-
-     
-
-   
-
-        <TextField
-          id="outlined-number"
-          label="Years in Business"
-          value={this.state.age}
-          name="Years"
-          onChange={this.handleChange('age')}
-          type="number"
-          className={classes.textField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          margin="normal"
-          variant="outlined"
-        />
-
-        
-<TextField
-          id="outlined-name"
-            label="UserName"
-            value={this.state.topic}
-            name="UserName"
-            className={classes.textField}
-            onChange={this.handleChange('name')}
-            margin="normal"
-            variant="outlined"
-            
-        />
-
-<TextField
-          id="outlined-password-input"
-          label="Password"
-          value={this.state.topic}
-          name="PassWord"
-          className={classes.textField}
-          onChange={this.handleChange('name')}
-          type="password"
-        //   autoComplete="current-password"
-          margin="normal"
-          variant="outlined"
-        />
-
-
-       
-        <TextField
-          id="outlined-full-width"
-          label="AboutMe"
-          style={{ margin: 8 }}
-          placeholder="Short Description About You"
-          helperText="Sign Me up!"
-          onChange={this.handleChange('name')}
-          value={this.state.topic}
-          name="AboutMe"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-
-<input
+    
+{/* <input
   accept="image/*"
   className={classes.input}
   style={{ display: 'none' }}
-  onChange={this.handleChange('name')}
+  onChange={this.handleChange}
   value={this.state.topic}
-  name="UserImage"
+  name="Files"
   id="raised-button-file"
   multiple
   type="file"
@@ -281,15 +192,24 @@ class BusinessForm extends React.Component {
 />
 <label htmlFor="raised-button-file">
   <Button variant="raised" component="span" className={classes.button}>
-    Upload A Profile Picture
+    Upload Files
   </Button>
-</label> 
+</label>  */}
+  <button onClick={this.postMessage} type="submit"> Add User</button>
       </form>
       </div>
     );
   }
+
 }
 
+function mapStateToProps (state) {
+  return {};
+}
 
+const BusinessForm1 = withRouter(BusinessForm);
 
-export default withStyles(styles)(BusinessForm);
+export default connect(
+  mapStateToProps,
+  {postMessage } 
+)((withStyles(styles)(BusinessForm1)));

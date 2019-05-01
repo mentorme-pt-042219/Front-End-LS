@@ -88,15 +88,15 @@ class UserCards extends React.Component {
  
   
       <div>
-        <Link to="./QAform">
-  <button >Add Question</button>
+        <Link to="./EForm">
+  <button >Register</button>
   </Link>
 </div>
 
         <Card>
           <CardContent>
-{this.props.message.map(message => {
-            return <CardTitle key={message.name} message={message} />;
+{this.props.user.map(user => {
+            return <CardTitle key={user.name} user={user} />;
           })}
       </CardContent>
       </Card>
@@ -114,10 +114,10 @@ class UserCards extends React.Component {
 //   classes: PropTypes.object.isRequired,
 // };
 
-const mstp = state => {
+const mstp = ({UserReducer}) => {
   return {
-   message: state.message,
-    fetchingMessage: state.fetchingMessage
+   user: UserReducer.user,
+    fetchingMessage: UserReducer.fetchingMessage
   }
 }
 

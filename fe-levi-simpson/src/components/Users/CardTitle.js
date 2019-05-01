@@ -30,8 +30,9 @@ const CardTitle = props => {
             <Avatar>W</Avatar>
           </Grid>
           <Grid item xs>
-            <Typography>{props.message.name}</Typography>
-            <Typography>{props.message.email}</Typography>
+         
+            <Typography>{props.user.handle}</Typography>
+           
           </Grid>
         </Grid>
       </Paper>
