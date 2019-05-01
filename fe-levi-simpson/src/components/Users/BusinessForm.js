@@ -12,13 +12,20 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    width: 900,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    marginLeft: 200,
+    marginRight: 200,
+    
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
   dense: {
-    marginTop: 16,
+    // marginTop: 16,
   },
   menu: {
     width: 200,
@@ -89,8 +96,8 @@ class BusinessForm extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div>
-      <Typography gutterBottom variant="h6">
+      <div mx="auto">
+      <Typography mx="auto" variant="h6">
             ENTREPRENEUR REGISTRATION
             </Typography>
      <Divider variant="middle" />

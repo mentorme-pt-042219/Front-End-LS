@@ -18,14 +18,14 @@ const insideStyles = {
 };
 
 const image1 =
-  "https://images.unsplash.com/photo-1482440308425-276ad0f28b19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80";
+  "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80";
 
 class Home extends React.Component {
     render() {
       return (
         <div style={styles}>
         {/* <Hello name="Parallax" /> */}
-        <Parallax bgImage={image1} strength={500}>
+        <Parallax bgImage={image1} rength={-100}>
           <div style={{ height: 500 }}>
             <div style={insideStyles}>HTML inside the parallax</div>
           </div>

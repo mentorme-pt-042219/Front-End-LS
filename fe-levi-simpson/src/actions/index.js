@@ -23,7 +23,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const login = creds => dispatch => {
     dispatch({type: LOGIN_START});
     return axios
-    .post('http://localhost:5000/api/login', creds)
+    .post('http://localhost:5000/api/friends', creds)
     .then(res => {
         localStorage.setItem('token', res.data.payload );
         dispatch({type: LOGIN_SUCCESS, payload: res.data.payload});
@@ -37,16 +37,17 @@ export const FETCH_DATA_START = 'FETCH_DATA_START';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 
-export const getData = () => dispatch => {
+export const getData = (id) => dispatch => {
   dispatch({ type: FETCH_DATA_START });
- return axios 
-    .get('https://deployment-pt3-oliver.herokuapp.com')
+  axiosWithAuth()
+    .get('http://localhost:5000/api/friends')
     .then(res => {
-      console.log('res',res)
+      console.log('this is res',res)
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+     
     })
     .catch(err => {
-      console.log(err.response);
+      console.log(err);
       dispatch({ type: FETCH_FAILURE, payload: err.response });
     });
 };
@@ -54,7 +55,7 @@ export const getData = () => dispatch => {
 export const LOAD_NEW_FRIEND = 'LOAD_NEW_FRIEND';
 export const NEW_FRIEND_SUCCESS='NEW_FRIEND_SUCCESS';
 
-export const postFriend = (data) => dispatch=> {
+export const postMessage = (data) => dispatch=> {
   dispatch({type:LOAD_NEW_FRIEND});
   axiosWithAuth()
 .post('http://localhost:5000/api/friends', data)

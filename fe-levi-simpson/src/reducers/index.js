@@ -8,6 +8,7 @@ const initialState = {
     error: "",
     fethcingMessage: false,
     message: [],
+    logginIn: false
  
    };
  
@@ -32,13 +33,13 @@ const initialState = {
           ...state,
           error: '',
           fetchingMessage: true,
-          errorStatusCode: null
+         
         };
       case FETCH_DATA_SUCCESS:
         return {
           ...state,
           error: '',
-          errorStatusCode: null,
+      
           fetchingMessage: false,
          message: action.payload
         
@@ -47,8 +48,8 @@ const initialState = {
         return {
           ...state,
           fetchingMessage: false,
-          error: action.payload.data.error,
-          errorStatusCode: action.payload.status
+       
+        
         };
         case LOAD_NEW_FRIEND:
         return {
@@ -60,10 +61,10 @@ const initialState = {
 
         case NEW_FRIEND_SUCCESS:
         
-          let newFriend1 ={
-            id: "", name: "", age:"", email: ""}
+          let newMessage ={
+            id: "", name: "", email:""}
           
-         return{ ...state, friends: [...state.friends, newFriend1] };
+         return{ ...state, message: [...state.message, newMessage] };
         
          case FETCH_FRIEND_UPDATE:
          return{

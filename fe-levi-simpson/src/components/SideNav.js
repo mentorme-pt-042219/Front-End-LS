@@ -279,7 +279,7 @@ class TemporaryDrawer extends React.Component {
             
             
                
-            <Link to="/Users" style={{ textDecoration: 'none', display: 'block' }}>
+            <Link to="/protected" style={{ textDecoration: 'none', display: 'block' }}>
         <MenuItem >
       
               <ListItemIcon> <SupervisedUserCircle color="primary" /></ListItemIcon>
