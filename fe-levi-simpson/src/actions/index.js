@@ -1,19 +1,23 @@
 import axios from 'axios';
 import axiosWithAuth from '../utils/AxiosAuth';
 
+const token= 'lambda100500900';
 
-export const ADD_QUESTION="ADD_QUESTION"
+export const REG_START ="REG_START";
+export const REG_SUCCESS = "REG_SUCCESS";
+export const REG_FAILURE= "REG_FAILURE";
 
-export const addQuestion= (id, user, topic, name) => {
-    
-let newQ = {id, user, topic, name};
-    return{
-     type: ADD_QUESTION,
-     payload: newQ
- }
+export const regUser = creds => dispatch => {
+  dispatch({type: REG_START});
+  console.log(creds);
+  return axios
+    .post('https://mentor-mee.herokuapp.com/auth/register', creds)
 
-}
-
+    .then(res => {
+      dispatch({type: REG_SUCCESS, payload: res.data});
+    })
+    .catch(err => dispatch({type: REG_FAILURE, payload: err}));
+};
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -25,7 +29,7 @@ export const login = creds => dispatch => {
     return axios
     .post('https://mentor-mee.herokuapp.com/auth/login', creds)
     .then(res => {
-       
+        
         dispatch({type: LOGIN_SUCCESS, payload: res.data.token});
         localStorage.setItem('token', res.data.token );
     })
@@ -53,6 +57,7 @@ export const getData = (id) => dispatch => {
     });
 };
 
+
 export const LOAD_NEW_FRIEND = 'LOAD_NEW_FRIEND';
 export const NEW_FRIEND_SUCCESS='NEW_FRIEND_SUCCESS';
 
@@ -68,8 +73,6 @@ dispatch({type: NEW_FRIEND_SUCCESS, payload: data})
 
 
 };
-
-
 
 
 export const FETCH_FRIEND_UPDATE = "LOAD_FRIEND_UPDATE";
@@ -132,10 +135,11 @@ export const filterQuestion = Q => {
 export const  ADD_QUESTION_LOAD= ' ADD_QUESTION_LOAD';
 export const ADD_QUESTION_SUCCESS='ADD_QUESTION_SUCCESS';
 
-export const postQuestion = (data) => dispatch=> {
+export const postQuestion = (question) => dispatch=> {
   dispatch({type:ADD_QUESTION_LOAD});
-  axiosWithAuth()
-.post('https://mentor-mee.herokuapp.com/questions', data)
+ 
+ return axiosWithAuth()
+.post('https://mentor-mee.herokuapp.com/questions', question)
 .then(res =>{
 console.log("resolved:", res);
 dispatch({type: ADD_QUESTION_SUCCESS, payload: res.data})

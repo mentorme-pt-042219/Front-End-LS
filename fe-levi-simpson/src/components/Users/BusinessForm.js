@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router'
 import { connect } from "react-redux";
 import {postMessage} from "../../actions/index";
+import {regUser} from "../../actions/index";
 
 const styles = theme => ({
   container: {
@@ -76,7 +77,7 @@ const type = [
 
 class BusinessForm extends React.Component {
   state = {
-    newUser:{
+   credentials:{
 handle:"",
 email:"",
 password:""
@@ -89,8 +90,8 @@ handleChange = e => {
   e.persist();
   let value = e.target.value;
   this.setState(prevState => ({
-      newUser: {
-          ...prevState.newUser,
+     credentials: {
+          ...prevState.credentials,
           [e.target.name]: value
       }
     }));
@@ -98,15 +99,11 @@ handleChange = e => {
 
 postMessage = e => {
   e.preventDefault();
-     this.props.postMessage(this.state.newUser);
-     this.setState({
-         newUser: {
-       handle: "",
-         email:"",
-         password: ""
-         }
-     });
-     this.props.history.push('/protected');
+     this.props.regUser(this.state.credentials);
+     setTimeout(() => {
+      this.props.history.push('/protected');
+    }, 1000);
+   
     };
  
     render() {
@@ -124,7 +121,7 @@ postMessage = e => {
           label="UserName"
           name="handle"
           className={classes.textField}
-          value={this.state.handle}
+          value={this.state.credentials.handle}
           onChange={this.handleChange}
           margin="normal"
           variant="outlined"
@@ -135,7 +132,7 @@ postMessage = e => {
           label="email"
           name="email"
           className={classes.textField}
-          value={this.state.email}
+          value={this.state.credentials.email}
           onChange={this.handleChange}
           margin="normal"
           variant="outlined"
@@ -146,7 +143,7 @@ postMessage = e => {
           label="password"
           name="password"
           className={classes.textField}
-          value={this.state.password}
+          value={this.state.credentials.password}
           onChange={this.handleChange}
           margin="normal"
           variant="outlined"
@@ -195,7 +192,7 @@ postMessage = e => {
     Upload Files
   </Button>
 </label>  */}
-  <button onClick={this.postMessage} type="submit"> Add User</button>
+  <button onClick={this.postMessage} type="submit"> Register</button>
       </form>
       </div>
     );
@@ -211,5 +208,5 @@ const BusinessForm1 = withRouter(BusinessForm);
 
 export default connect(
   mapStateToProps,
-  {postMessage } 
+  {regUser } 
 )((withStyles(styles)(BusinessForm1)));

@@ -32,7 +32,7 @@ const styles = theme => ({
 
 class QAform extends React.Component {
   state = {
-    newQuestion:{
+    question:{
 
 title:"",
 body:"",
@@ -47,8 +47,8 @@ FK_user_id:null
       .get('https://mentor-mee.herokuapp.com/auth/decode')
       .then(res =>
         this.setState(prevState => ({
-          newQuestion: {
-            ...prevState.newQuestion,
+          question: {
+            ...prevState.question,
             author: res.data.handle,
             FK_user_id: res.data.subject
           }
@@ -61,22 +61,22 @@ handleChange = e => {
   e.persist();
   let value = e.target.value;
   this.setState(prevState => ({
-      newQuestion: {
+      question: {
           ...prevState.newQuestion,
           [e.target.name]: value
       }
     }));
 };
 
-componentWillUnmount() {
-  this.props.getQuestion();
-}
+// componentWillUnmount() {
+//   this.props.getQuestion();
+// }
 
 postQuestion = e => {
   e.preventDefault();
-     this.props.postQuestion(this.state.newQuestion);
+     this.props.postQuestion(this.state.qestion);
      this.setState({
-         newQuestion: {
+      qestion: {
         
           title:"",
           body:"",
@@ -88,8 +88,9 @@ postQuestion = e => {
  
     render() {
     const { classes } = this.props;
-
+    console.log(this.state.question.author);
     return (
+  
 <div>
       <Typography gutterBottom variant="h6">
       ASK A MENTOR
@@ -100,8 +101,9 @@ postQuestion = e => {
        id="outlined-name"
           label="title"
           name="title"
+          type="text"
           className={classes.textField}
-          value={this.state.newQuestion.title}
+          value={this.state.question.title}
           onChange={this.handleChange}
           margin="normal"
           variant="outlined"
@@ -112,7 +114,7 @@ postQuestion = e => {
           label="body"
           name="body"
           className={classes.textField}
-          value={this.state.newQuestion.body}
+          value={this.state.question.body}
           onChange={this.handleChange}
           margin="normal"
           variant="outlined"

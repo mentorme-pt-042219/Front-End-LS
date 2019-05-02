@@ -1,5 +1,5 @@
-import {LOGIN_START, LOGIN_SUCCESS, FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_FAILURE,
-    LOAD_NEW_FRIEND, NEW_FRIEND_SUCCESS, LOAD_NEW_QUESTION, NEW_QUESTION_SUCCESS, ADD_QUESTION, FETCH_FRIEND_UPDATE, FRIEND_UPDATE_SUCCESS, LOAD_DELETE_FRIEND, DELETE_FRIEND_SUCCESS} from "../actions/index";
+import {REG_START, REG_SUCCESS, REG_FAILURE, LOGIN_START, LOGIN_SUCCESS, FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_FAILURE,
+    LOAD_NEW_FRIEND, NEW_FRIEND_SUCCESS, LOAD_NEW_QUESTION, NEW_QUESTION_SUCCESS, FETCH_FRIEND_UPDATE, FRIEND_UPDATE_SUCCESS, LOAD_DELETE_FRIEND, DELETE_FRIEND_SUCCESS} from "../actions/index";
 
 const initialState = {
   //  questions: [{id:1, user: "BobSmith" , topic:"Marketing", text: "How do increase my social media influence?" }, 
@@ -8,7 +8,14 @@ const initialState = {
     error: "",
     fethcingMessage: false,
    user: [],
-    logginIn: false
+    logginIn: false,
+
+    logingIn: false,
+    error: null,
+    isAuthenticated: false,
+    logingOut: false,
+    registering: false,
+    isRegistered: false
  
    };
  
@@ -81,9 +88,29 @@ const initialState = {
           case LOAD_DELETE_FRIEND:
           return { ...state, error:""}
 
-         case ADD_QUESTION:
         
-         return {...state,  questions: [...state.questions, action.payload]};
+
+         case REG_START:
+      return {
+        ...state,
+        registering: true,
+        isRegistered: false,
+        error: null
+      };
+    case REG_SUCCESS:
+      return {
+        ...state,
+        registering: false,
+        isRegistered: true,
+        error: null
+      };
+    case REG_FAILURE:
+      return {
+        ...state,
+        registering: false,
+        isRegistered: false,
+        error: action.payload
+      };
 
       default:
         return state;

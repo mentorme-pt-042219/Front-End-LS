@@ -70,7 +70,7 @@ import {
           title: action.payload.title,
           id: action.payload.id,
           body: action.payload.body,
-          author: action.paylaod.author,
+          author: action.payload.author,
           FK_user_id: action.payload.FK_user_id
         }
         return{
