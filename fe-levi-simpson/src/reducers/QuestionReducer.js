@@ -34,7 +34,8 @@ import {
         return {
             ...state,
             error: "",
-            fetchingQuestion: true
+            fetchingQuestion: true,
+            questions: []
 
         };
         case FETCH_QUESTION_SUCCESS:
@@ -62,7 +63,7 @@ import {
         return{
           ...state,
           error: null,
-          question: [],
+          questions: [],
           addingQuestion: true
         };
         case ADD_QUESTION_SUCCESS:

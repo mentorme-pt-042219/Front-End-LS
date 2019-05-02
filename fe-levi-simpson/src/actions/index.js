@@ -1,7 +1,7 @@
 import axios from 'axios';
 import axiosWithAuth from '../utils/AxiosAuth';
 
-const token= 'lambda100500900';
+// const token= 'lambda100500900';
 
 export const REG_START ="REG_START";
 export const REG_SUCCESS = "REG_SUCCESS";
@@ -135,7 +135,7 @@ export const filterQuestion = Q => {
 export const  ADD_QUESTION_LOAD= ' ADD_QUESTION_LOAD';
 export const ADD_QUESTION_SUCCESS='ADD_QUESTION_SUCCESS';
 
-export const postQuestion = (question) => dispatch=> {
+export const postQuestion = question => dispatch=> {
   dispatch({type:ADD_QUESTION_LOAD});
  
  return axiosWithAuth()

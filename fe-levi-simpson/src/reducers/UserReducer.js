@@ -27,13 +27,15 @@ const initialState = {
           error: '',
           errorStatusCode: null,
           fetchingFriends: false,
-          loggingIn: true
+          logingIn: true,
+          isAuthenticated: false,
         };
       case LOGIN_SUCCESS:
         return {
           ...state,
           error: '',
-          loggingIn: false
+          loggingIn: false,
+          isAuthenticated: true,
         };
         case FETCH_DATA_START:
         return {

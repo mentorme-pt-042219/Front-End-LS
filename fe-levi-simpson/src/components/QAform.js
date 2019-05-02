@@ -62,7 +62,7 @@ handleChange = e => {
   let value = e.target.value;
   this.setState(prevState => ({
       question: {
-          ...prevState.newQuestion,
+          ...prevState.question,
           [e.target.name]: value
       }
     }));
@@ -76,7 +76,7 @@ postQuestion = e => {
   e.preventDefault();
      this.props.postQuestion(this.state.qestion);
      this.setState({
-      qestion: {
+      question: {
         
           title:"",
           body:"",
@@ -97,20 +97,15 @@ postQuestion = e => {
       </Typography>
        <Divider variant="middle" />
       <form onSubmit={this.postQuestion} className={classes.container} noValidate autoComplete="off">
-        <TextField
-       id="outlined-name"
-          label="title"
-          name="title"
-          type="text"
-          className={classes.textField}
-          value={this.state.question.title}
-          onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
-        />
+      <input
+                onChange={this.handleChange}
+                type="text"
+                name="title"
+                value={this.state.question.title}
+                placeholder="Add question..."
+              />
 
-<TextField
-       id="outlined-name"
+       <TextField id="outlined-name"
           label="body"
           name="body"
           className={classes.textField}
