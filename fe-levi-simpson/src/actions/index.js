@@ -153,12 +153,12 @@ export const  ADD_ANSWER_START= ' ADD_QUESTION_LOAD';
 export const ADD_ANSWER_SUCCESS='ADD_QUESTION_SUCCESS';
 export const ADD_ANSWER_FAILURE='ADD_QUESTION_SUCCESS';
 
-const URL = 'https://mentor-mee.herokuapp.com/questions';
+
 export const addAnswer = answer => dispatch => {
   dispatch({type: ADD_ANSWER_START});
 
   return axiosWithAuth()
-    .post(URL, answer)
+    .post('https://mentor-mee.herokuapp.com/answers', answer)
     .then(res => dispatch({type: ADD_ANSWER_SUCCESS, payload: res.data}))
     .catch(err => dispatch({type: ADD_ANSWER_FAILURE, payload: err.message}));
 };
@@ -176,9 +176,9 @@ export const addQuestion = question => dispatch => {
     .catch(err => dispatch({type: ADD_QUESTION_FAILURE, payload: err.message}));
 };
 
-export const  DELETE_ANSWER_START= ' ADD_QUESTION_START';
-export const DELETE_ANSWER_SUCCESS='ADD_QUESTION_SUCCESS';
-export const DELETE_ANSWER_FAILURE='ADD_QUESTION_FAILURE';
+export const  DELETE_ANSWER_START= ' DELETE_ANSWER_START';
+export const DELETE_ANSWER_SUCCESS='ADD_ANSWER_SUCCESS';
+export const DELETE_ANSWER_FAILURE='ADD_ANSWER_FAILURE';
 
 export const deleteAnswer = id => dispatch => {
   dispatch({type: DELETE_ANSWER_START});
@@ -221,7 +221,7 @@ export const editQuestion = (id, question) => dispatch => {
   dispatch({type: EDIT_QUESTION_START});
   console.log(id);
   axiosWithAuth()
-    .put(`${URL}/${id}`, question)
+    .put(`https://mentor-mee.herokuapp.com/questions/${id}`, question)
 
     .then(res => {
       console.log(res.data);

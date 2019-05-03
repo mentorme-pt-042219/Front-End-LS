@@ -40,7 +40,7 @@ class UpdateQuestion extends Component {
       }
     });
     this.props.getQuestion();
-    this.props.history.push('/QArchives');
+    this.props.history.push('/Question');
   };
 
   render() {

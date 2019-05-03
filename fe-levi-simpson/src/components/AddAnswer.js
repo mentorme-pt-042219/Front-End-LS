@@ -6,7 +6,7 @@ import {addAnswer} from '../actions';
 
 
 
-class AddComment extends Component {
+class AddAnswer extends Component {
   state = {
     answer: {
       body: '',
@@ -52,7 +52,7 @@ class AddComment extends Component {
       }
     });
 
-    this.props.history.push(`/questions/${this.props.match.params.id}`);
+    this.props.history.push(`/Question/${this.props.match.params.id}`);
   };
 
   render() {
@@ -75,7 +75,7 @@ class AddComment extends Component {
               </div>
               <div className="btns">
                 <input type="submit" value="Add" />
-                <Link to={`/questions/${this.props.match.params.id}`}>
+                <Link to={`/Question/${this.props.match.params.id}`}>
                   Cancel
                 </Link>
               </div>
@@ -90,4 +90,4 @@ class AddComment extends Component {
 export default connect(
   null,
   {addAnswer}
-)(AddComment);
+)(AddAnswer);

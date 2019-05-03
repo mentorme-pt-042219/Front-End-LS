@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import axiosWithAuth from '../utils/axiosAuth';
+import axiosWithAuth from '../../src/utils/axiosAuth';
 import {connect} from 'react-redux';
 import {deleteAnswer} from '../../src/actions/index';
 

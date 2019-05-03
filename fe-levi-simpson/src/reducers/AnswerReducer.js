@@ -2,12 +2,15 @@ import {
     FETCH_ANSWERS_START,
     FETCH_ANSWERS_SUCCESS,
     FETCH_ANSWERS_FAILURE,
+
     ADD_ANSWER_START,
     ADD_ANSWER_SUCCESS,
     ADD_ANSWER_FAILURE,
+
     EDIT_ANSWER_START,
     EDIT_ANSWER_SUCCESS,
     EDIT_ANSWER_FAILURE,
+
     DELETE_ANSWER_START,
     DELETE_ANSWER_SUCCESS,
     DELETE_ANSWER_FAILURE
@@ -21,6 +24,7 @@ import {
     errors: null,
     isEditing: false,
     edited: false
+  
   };
   
   export const AnswerReducer = (state = initialState, action) => {

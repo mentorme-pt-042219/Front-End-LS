@@ -23,7 +23,7 @@ import Login from './components/login';
 import PrivateRoute from './components/PrivateRoute';
 import UpdateQuestion from './components/UpdateQuestion'
 import QuestionDetails from './components/QuestionDetails';
-import AddComment from './components/AddAnswer'; 
+import AddAnswer from './components/AddAnswer'; 
 
 class App extends React.Component {
   render() {
@@ -40,7 +40,7 @@ class App extends React.Component {
      
   <PrivateRoute exact path="/EditQuestion/:id" component={UpdateQuestion}/>
            <PrivateRoute path="/Question/:id" component ={QuestionDetails}/>
-           <PrivateRoute path="/Question/:id/add-comment" component ={AddComment}/>
+           <PrivateRoute path="/Question/:id/add-comment" component ={AddAnswer}/>
     
            
             </div>
