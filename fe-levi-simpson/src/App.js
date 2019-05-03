@@ -33,40 +33,27 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        {/* <TopNavH> */}
-         {/* <Route path="/" component ={TopNav1}/> */}
-         {/* <MuiThemeProvider theme={outerTheme4}> */}
-        
+      <div className="App">
    
          <Route path="/" component ={SideNav1}/>
-         <Route path="/login" component={Login} />
-         <Route  path="/home" component={Home}/>
-         <Route  path="/Eform" component={BusinessForm1}/>
-         <Route  path="/Mform" component={VolunteerForm}/>
-      <Route  path="/QArchives" component={QuestionCards}/>
-            <Route  path="/QAform" component={QAform1}/>
-            <ProtectedRoute  path="/protected" component={UserCards}/>
-            <Route path="/UserView" component={UserView}/>
+         <Route path="/" component={Login} />
+         {/* <Route  path="/home" component={Home}/> */}
+         <Route  path="/register" component={Register}/>
+         {/* <Route  path="/Mform" component={VolunteerForm}/> */}
+         <PrivateRoute path="/QAform" component={QAform}/>
+      <PrivateRoute  path="/QArchives" component={QuestionCards}/>
+           <PrivateRoute path="/Question/:id" component ={QuestionDetails}/>
+           <PrivateRoute path="/Question/:id/add-comment" component ={QuestionDetails}/>
+            {/* <PrivateRoute  path="/protected" component={UserCards}/> */}
+            {/* <Route path="/UserView" component={UserView}/> */}
           
            
-          
-            {/* </MuiThemeProvider> */}
-            {/* </TopNavH> */}
+            </div>
+        
       </Router>
     );
   }
 }
 
-// export const createApp = () => {
-//   return class SideNavApp extends React.Component {
-//     render() {
-//       return (
-//         <Router>
-//           <App />
-//         </Router>
-//       );
-//     }
-//   };
-// }
 
 export default App;

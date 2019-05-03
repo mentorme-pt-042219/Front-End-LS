@@ -6,7 +6,7 @@ import {addAnswer} from '../actions';
 
 import './AddAnswer.css';
 
-class AddAnswer extends Component {
+class AddComment extends Component {
   state = {
     answer: {
       body: '',
@@ -90,4 +90,4 @@ class AddAnswer extends Component {
 export default connect(
   null,
   {addAnswer}
-)(AddAnswer);
+)(AddComment);

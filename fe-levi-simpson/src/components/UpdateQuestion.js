@@ -79,13 +79,13 @@ class UpdateQuestion extends Component {
   }
 }
 
-const mapStateToProps = ({questionsReducer}, props) => ({
-  question: questionsReducer.questions.find(
+const mapStateToProps = ({QuestionReducer}, props) => ({
+  question: QuestionReducer.questions.find(
     q => `${q.id}` === props.match.params.id
   )
 });
 
 export default connect(
   mapStateToProps,
-  {editQuestion, fetchQuestions}
-)(EditQuestion);
+  {editQuestion, getQuestion}
+)(UpdateQuestion);

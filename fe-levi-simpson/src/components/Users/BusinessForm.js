@@ -41,7 +41,7 @@ const styles = theme => ({
 
 
 
-class BusinessForm extends React.Component {
+class Register extends React.Component {
   state = {
    credentials:{
 handle:"",
@@ -128,9 +128,9 @@ function mapStateToProps (state) {
   return {};
 }
 
-const BusinessForm1 = withRouter(BusinessForm);
+// const Register1 = withRouter(BusinessForm);
 
 export default connect(
   mapStateToProps,
   {regUser } 
-)((withStyles(styles)(BusinessForm1)));
+)((withStyles(styles)(Register)));

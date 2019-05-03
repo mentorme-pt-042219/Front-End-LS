@@ -25,4 +25,13 @@ const QCardsList = props => {
   )
 };
 
-export default QCardsList;
+const mapStateToProps = ({QuestionReducer}) => {
+  return {
+    questions: QuestionReducer.questions
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {deleteQuestion}
+)(QcardsList);

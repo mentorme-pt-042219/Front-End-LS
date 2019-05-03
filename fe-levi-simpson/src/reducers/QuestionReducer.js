@@ -72,14 +72,20 @@ import {
         error: null,
         deletingQuestion: true
       };
-    case DELETE_QUESTION_SUCCESS:
+    // case DELETE_QUESTION_SUCCESS:
+    //   return {
+    //     ...state,
+    //     questions: state.questions.filter(q => q.id !== action.payload),
+    //     error: null,
+    //     deletingQuestion: false
+    //   };
+      case DELETE_QUESTION_SUCCESS:
       return {
         ...state,
         questions: state.questions.filter(q => q.id !== action.payload),
         error: null,
         deletingQuestion: false
       };
-
     case DELETE_QUESTION_FAILURE:
       return {
         ...state,
