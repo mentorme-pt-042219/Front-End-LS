@@ -148,3 +148,139 @@ dispatch({type: ADD_QUESTION_SUCCESS, payload: res.data})
 
 
 };
+
+export const  ADD_ANSWER_START= ' ADD_QUESTION_LOAD';
+export const ADD_ANSWER_SUCCESS='ADD_QUESTION_SUCCESS';
+export const ADD_ANSWER_FAILURE='ADD_QUESTION_SUCCESS';
+
+const URL = 'https://mentor-mee.herokuapp.com/questions';
+export const addAnswer = answer => dispatch => {
+  dispatch({type: ADD_ANSWER_START});
+
+  return axiosWithAuth()
+    .post(URL, answer)
+    .then(res => dispatch({type: ADD_ANSWER_SUCCESS, payload: res.data}))
+    .catch(err => dispatch({type: ADD_ANSWER_FAILURE, payload: err.message}));
+};
+
+export const  ADD_QUESTION_START= ' ADD_QUESTION_START';
+export const ADD_QUESTION_SUCCESS='ADD_QUESTION_SUCCESS';
+export const ADD_QUESTION_FAILURE='ADD_QUESTION_FAILURE';
+
+export const addQuestion = question => dispatch => {
+  dispatch({type: ADD_QUESTION_START});
+
+  return axiosWithAuth()
+    .post(URL, question)
+    .then(res => dispatch({type: ADD_QUESTION_SUCCESS, payload: res.data}))
+    .catch(err => dispatch({type: ADD_QUESTION_FAILURE, payload: err.message}));
+};
+
+export const  DELETE_ANSWER_START= ' ADD_QUESTION_START';
+export const DELETE_ANSWER_SUCCESS='ADD_QUESTION_SUCCESS';
+export const DELETE_ANSWER_FAILURE='ADD_QUESTION_FAILURE';
+
+export const deleteAnswer = id => dispatch => {
+  dispatch({type: DELETE_ANSWER_START});
+
+  axiosWithAuth()
+    .delete(`https://mentor-mee.herokuapp.com/answers/${id}`)
+    .then(res => {
+      console.log(res);
+      dispatch({type: DELETE_ANSWER_SUCCESS, payload: id});
+    })
+    .catch(err =>
+      dispatch({type: DELETE_ANSWER_FAILURE, payload: err.message})
+    );
+};
+
+export const  DELETE_QUESTION_START= ' ADD_QUESTION_START';
+export const DELETE_QUESTION_SUCCESS='ADD_QUESTION_SUCCESS';
+export const DELETE_QUESTION_FAILURE='ADD_QUESTION_FAILURE';
+
+export const deleteQuestion = id => dispatch => {
+  dispatch({type: DELETE_QUESTION_START});
+  console.log(id);
+  return axiosWithAuth()
+    .delete(`https://mentor-mee.herokuapp.com/questions/${id}`)
+    .then(res => {
+      console.log(res);
+      dispatch({type: DELETE_QUESTION_SUCCESS, payload: id});
+    })
+    .catch(err =>
+      dispatch({type: DELETE_QUESTION_FAILURE, payload: err.message})
+    );
+};
+
+
+export const  EDIT_QUESTION_START = 'EDIT_QUESTION_START'
+export const EDIT_QUESTION_SUCCESS ='EDIT_QUESTION_SUCCESS' 
+export const EDIT_QUESTION_FAILURE ='EDIT_QUESTION_FAILURE'
+
+export const editQuestion = (id, question) => dispatch => {
+  dispatch({type: EDIT_QUESTION_START});
+  console.log(id);
+  axiosWithAuth()
+    .put(`${URL}/${id}`, question)
+
+    .then(res => {
+      console.log(res.data);
+      dispatch({type: EDIT_QUESTION_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({type: EDIT_QUESTION_FAILURE, payload: err.message});
+    });
+};
+
+
+export const  FETCH_ANSWERS_START = 'FETCH_ANSWERS_START'
+export const FETCH_ANSWERS_SUCCESS ='FETCH_ANSWERS_SUCCESS' 
+export const FETCH_ANSWERS_FAILURE ='FETCH_ANSWERS_FAILURE'
+
+export const fetchAnswers = id => dispatch => {
+  dispatch({type: FETCH_ANSWERS_START});
+
+  axiosWithAuth()
+    .get(`https://mentor-mee.herokuapp.com/questions/${id}`)
+    .then(res =>
+      dispatch({type: FETCH_ANSWERS_SUCCESS, payload: res.data.answers})
+    )
+    .catch(err =>
+      dispatch({type: FETCH_ANSWERS_FAILURE, payload: err.message})
+    );
+};
+
+export const  FETCH_QUESTIONS_START = 'FETCH_QUESTIONS_START'
+export const FETCH_QUESTIONS_SUCCESS ='FETCH_QUESTIONS_SUCCESS' 
+export const FETCH_QUESTIONS_FAILURE ='FETCH_QUESTIONS_FAILURE'
+
+export const fetchQuestions = () => dispatch => {
+  dispatch({type: FETCH_QUESTIONS_START});
+
+  axiosWithAuth()
+    .get('https://mentor-mee.herokuapp.com/questions')
+    .then(res => {
+      console.log(res);
+      dispatch({type: FETCH_QUESTIONS_SUCCESS, payload: res.data});
+    })
+    .catch(err =>
+      dispatch({type: FETCH_QUESTIONS_FAILURE, payload: err.response})
+    );
+};
+
+export const  LOGOUT_START = 'FETCH_QUESTIONS_START'
+export const LOGOUT_SUCCESS ='FETCH_QUESTIONS_SUCCESS' 
+export const LOGOUT_FAILURE ='FETCH_QUESTIONS_FAILURE'
+
+
+export const logOutUser = () => dispatch => {
+  dispatch({type: LOGOUT_START});
+
+  localStorage
+    .clear()
+    .then(() => {
+      dispatch({type: LOGOUT_SUCCESS});
+    })
+    .catch(err => dispatch({type: LOGOUT_FAILURE, payload: err.message}));
+};

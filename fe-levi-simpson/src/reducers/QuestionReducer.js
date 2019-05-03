@@ -59,6 +59,34 @@ import {
 
         }
 
+        case FETCH_QUESTIONS_FAILURE:
+      return {
+        ...state,
+        questions: [],
+        isFetching: false,
+        errors: action.payload
+      };
+    case DELETE_QUESTION_START:
+      return {
+        ...state,
+        error: null,
+        deletingQuestion: true
+      };
+    case DELETE_QUESTION_SUCCESS:
+      return {
+        ...state,
+        questions: state.questions.filter(q => q.id !== action.payload),
+        error: null,
+        deletingQuestion: false
+      };
+
+    case DELETE_QUESTION_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        deletingQuestion: false
+      };
+
         case  ADD_QUESTION_LOAD:
         return{
           ...state,
@@ -87,7 +115,35 @@ import {
             return question.title.includes(action.payload);
           })
         };
-
+        case FILTER_QUESTION:
+        return {
+          ...state,
+          filteredQuestions: state.questions.filter(question => {
+            return question.title.includes(action.payload);
+          })
+        };
+      case EDIT_QUESTION_START:
+        return {
+          ...state,
+          isEditing: true,
+          error: null,
+          edited: false
+        };
+      case EDIT_QUESTION_SUCCESS:
+        return {
+          ...state,
+          isEditing: false,
+          error: null,
+          edited: true,
+          questions: action.payload
+        };
+      case EDIT_QUESTION_FAILURE:
+        return {
+          ...state,
+          isEditing: false,
+          error: action.payload,
+          edited: false
+        };
 
         default:
         return state;

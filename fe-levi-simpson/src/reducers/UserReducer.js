@@ -37,6 +37,13 @@ const initialState = {
           loggingIn: false,
           isAuthenticated: true,
         };
+        case LOGIN_FAILURE:
+      return {
+        ...state,
+        logingIn: false,
+        isAuthenticated: false,
+        error: action.payload
+      };
         case FETCH_DATA_START:
         return {
           ...state,
@@ -90,7 +97,27 @@ const initialState = {
           case LOAD_DELETE_FRIEND:
           return { ...state, error:""}
 
-        
+          case LOGOUT_START:
+          return {
+            ...state,
+            logingOut: true,
+            isAuthenticated: true,
+            error: null
+          };
+        case LOGOUT_SUCCESS:
+          return {
+            ...state,
+            logingOut: false,
+            isAuthenticated: false,
+            error: null
+          };
+        case LOGOUT_FAILURE:
+          return {
+            ...state,
+            logingOut: false,
+            isAuthenticated: true,
+            error: action.payload
+          };
 
          case REG_START:
       return {
