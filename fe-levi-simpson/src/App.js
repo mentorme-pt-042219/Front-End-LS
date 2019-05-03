@@ -28,6 +28,8 @@ import UserView from './components/Users/UserView';
 
 import Login from './components/login';
 import ProtectedRoute from './components/ProtectedRoute';
+import { editQuestion } from './actions';
+import UpdateQuestion from './components/UpdateQuestion';
 
 class App extends React.Component {
   render() {
@@ -42,6 +44,7 @@ class App extends React.Component {
          {/* <Route  path="/Mform" component={VolunteerForm}/> */}
          <PrivateRoute path="/QAform" component={QAform}/>
       <PrivateRoute  path="/QArchives" component={QuestionCards}/>
+      <PrivateRoute path="/EditQuestion/:id" component={UpdateQuestion}/>
            <PrivateRoute path="/Question/:id" component ={QuestionDetails}/>
            <PrivateRoute path="/Question/:id/add-comment" component ={QuestionDetails}/>
             {/* <PrivateRoute  path="/protected" component={UserCards}/> */}
