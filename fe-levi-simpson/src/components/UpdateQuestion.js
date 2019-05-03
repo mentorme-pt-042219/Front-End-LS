@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {editQuestion, fetchQuestions} from '../actions';
 import Header from './Header';
 
-class EditQuestion extends Component {
+class UpdateQuestion extends Component {
   state = {
     question: {
       title: this.props.question.title ? this.props.question.title : '',
@@ -38,15 +38,15 @@ class EditQuestion extends Component {
         body: ''
       }
     });
-    this.props.fetchQuestions();
-    this.props.history.push('/questions');
+    this.props.getQuestion();
+    this.props.history.push('/QArchives');
   };
 
   render() {
     console.log(this.props);
     return (
       <Fragment>
-        <Header />
+        {/* <Header /> */}
         <form onSubmit={this.onSubmit}>
           <div className="form-content">
             <div className="form-item">

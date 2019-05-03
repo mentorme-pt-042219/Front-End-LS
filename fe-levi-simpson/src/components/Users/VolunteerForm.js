@@ -25,43 +25,10 @@ const styles = theme => ({
   },
 });
 
-const currencies = [
-  {
-    value: 'Entrepreneur',
-    label: 'Entrepreneur',
-  },
-  {
-    value: 'Volunteer',
-    label: 'Volunteer',
-},
- 
-];
 
 
-const type = [
-  {
-    value: 'Sole-Proprietorship',
-    label: 'Sole-Proprietorship',
-  },
 
-  {
-    value: 'Partnership',
-    label: 'Partnership',
-  },
-  {
-  value: 'Corporation',
-  label: 'Corporation',
-},
-{
-  value: 'LLC',
-  label: 'LLC',
-},
-{
-  value: 'Cooperative',
-  label: 'Cooperative',
-},
- 
-];
+
 
 class VolunteerForm extends React.Component {
   state = {

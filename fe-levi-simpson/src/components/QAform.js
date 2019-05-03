@@ -115,71 +115,7 @@ postQuestion = e => {
           variant="outlined"
         />
 
-{/* <TextField
-       id="outlined-name"
-          label="author"
-          name="author"
-          className={classes.textField}
-          value={this.state.newQuestion.author}
-          onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
-        /> */}
 
-{/* <TextField
-       id="outlined-name"
-          label="user_id"
-          name="user_id"
-          className={classes.textField}
-          value={this.state.newQuestion.author}
-          onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
-        /> */}
-
-{/* <TextField
-          id="outlined-select-currency"
-          select
-          label="Type"
-          className={classes.textField}
-          value={this.state.Type}
-          name="Type"
-          onChange={this.handleChange}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Select One"
-          margin="normal"
-          variant="outlined"
-        >
-          {data.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField> */}
-
-
-    
-{/* <input
-  accept="image/*"
-  className={classes.input}
-  style={{ display: 'none' }}
-  onChange={this.handleChange}
-  value={this.state.topic}
-  name="Files"
-  id="raised-button-file"
-  multiple
-  type="file"
-  helperText="Upload Your Profile Pic"
-/>
-<label htmlFor="raised-button-file">
-  <Button variant="raised" component="span" className={classes.button}>
-    Upload Files
-  </Button>
-</label>  */}
   <button onClick={this.postQuestion} type="submit"> Add Question</button>
       </form>
       </div>
