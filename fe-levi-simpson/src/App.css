@@ -241,7 +241,7 @@ form .form-content .btns a:hover {
 .Header .logo {
   width: 150px;
   height: 30.94px;
-  background: url('../img/logo.png') no-repeat center center / cover;
+  background: url('../src/components/images/logoM.png') no-repeat center center / cover;
   margin-right: 100px;
   margin-left: 10px;
 }
@@ -342,7 +342,7 @@ form .form-content .btns a:hover {
 .Login .container .logo {
   width: 223px;
   height: 46px;
-  background: url('../img/logo.png') no-repeat center center / cover;
+  background: url('../src/components/images/logoM.png') no-repeat center center / cover;
 }
 
 .Login .right-gradient {
@@ -383,7 +383,7 @@ form .form-content .btns a:hover {
 .Login .container .logo {
   width: 223px;
   height: 46px;
-  background: url('../img/logo.png') no-repeat center center / cover;
+  background: url('../src/components/images/logoM.png') no-repeat center center / cover;
 }
 
 .Login .right-gradient {

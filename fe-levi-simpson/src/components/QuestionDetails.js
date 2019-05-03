@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosAuth';
 import {deleteQuestion, fetchAnswers} from '../actions';
 import AnswersList from './AnswersList';
-import Header from './Header';
+import SearchBar from '../components/SearchBar';
 
-import './QuestionDetails.css';
+
 
 class QuestionDetails extends Component {
   state = {
@@ -37,13 +37,13 @@ class QuestionDetails extends Component {
     console.log(question);
     return (
       <div>
-        <Header />
+   <SearchBar/>
         <div className="QuestionDetails">
           <div className="title">
             <div className="header">
               <h2>{question.title}</h2>
             </div>
-            <Link to={`/questions/${question.id}/add-answer`}>
+            <Link to={`/Question/${question.id}/add-comment`}>
               <i class="fas fa-plus" /> Add answer
             </Link>
           </div>
@@ -56,14 +56,14 @@ class QuestionDetails extends Component {
               </div>
               <div className="buttons">
                 {question.FK_user_id === this.state.FK_user_id && (
-                  <Link to={`/edit-question/${question.id}`}>
+                  <Link to={`/EditQuestion/${question.id}`}>
                     <i class="fas fa-edit" />
                   </Link>
                 )}
                 {question.FK_user_id === this.state.FK_user_id && (
                   <Link
                     onClick={() => this.onDelete(question.id)}
-                    to="/questions"
+                    to="/Question"
                   >
                     <i class="far fa-trash-alt" />
                   </Link>
@@ -82,12 +82,12 @@ class QuestionDetails extends Component {
   }
 }
 
-const mapStateToProps = ({questionsReducer, answersReducer, authReducer}) => {
-  console.log(questionsReducer);
+const mapStateToProps = ({QuestionReducer, AnswerReducer, UserReducer}) => {
+  console.log(QuestionReducer);
   return {
-    questions: questionsReducer.questions,
-    isAuthenticated: authReducer.isAuthenticated,
-    answers: answersReducer.answers
+    questions: QuestionReducer.questions,
+    isAuthenticated:UserReducer.isAuthenticated,
+    answers: AnswerReducer.answers
   };
 };
 

@@ -4,14 +4,16 @@ import {
     FETCH_QUESTION_ERROR,
 
     FILTER_QUESTION,
-    ADD_QUESTION_LOAD,
+    ADD_QUESTION_START,
     ADD_QUESTION_SUCCESS,
-  
+    ADD_QUESTION_FAILURE,
 
-    DELETE_QUESTION_LOAD,
+    DELETE_QUESTION_START,
     DELETE_QUESTION_SUCCESS,
+    DELETE_QUESTION_FAILURE,
+
    
-    EDIT_QUESTION_LOAD,
+    EDIT_QUESTION_START,
     EDIT_QUESTION_SUCCESS,
     EDIT_QUESTION_FAILURE,
     ADD_NEW_QUESTION
@@ -55,30 +57,18 @@ import {
             ...state,
             questions: [],
             fetchingQuestion: false,
-            error:"",
+            error:action.payload,
 
         }
 
-        case FETCH_QUESTIONS_FAILURE:
-      return {
-        ...state,
-        questions: [],
-        isFetching: false,
-        errors: action.payload
-      };
+    
     case DELETE_QUESTION_START:
       return {
         ...state,
         error: null,
         deletingQuestion: true
       };
-    // case DELETE_QUESTION_SUCCESS:
-    //   return {
-    //     ...state,
-    //     questions: state.questions.filter(q => q.id !== action.payload),
-    //     error: null,
-    //     deletingQuestion: false
-    //   };
+  
       case DELETE_QUESTION_SUCCESS:
       return {
         ...state,
@@ -93,7 +83,7 @@ import {
         deletingQuestion: false
       };
 
-        case  ADD_QUESTION_LOAD:
+        case  ADD_QUESTION_START:
         return{
           ...state,
           error: null,
@@ -114,12 +104,12 @@ import {
             error: null,
             addingQuestion: false
         }
-        case FILTER_QUESTION:
+        case ADD_QUESTION_FAILURE:
         return {
           ...state,
-          filteredQuestions: state.questions.filter(question => {
-            return question.title.includes(action.payload);
-          })
+          questions: [],
+          error: action.payload,
+          addingQuestion: false
         };
         case FILTER_QUESTION:
         return {
@@ -128,6 +118,7 @@ import {
             return question.title.includes(action.payload);
           })
         };
+      
       case EDIT_QUESTION_START:
         return {
           ...state,

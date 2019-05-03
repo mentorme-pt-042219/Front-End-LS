@@ -11,7 +11,7 @@ import {
     DELETE_ANSWER_START,
     DELETE_ANSWER_SUCCESS,
     DELETE_ANSWER_FAILURE
-  } from '../actions';
+  } from '../actions/index';
   
   const initialState = {
     answers: [],
@@ -23,7 +23,7 @@ import {
     edited: false
   };
   
-  export const answersReducer = (state = initialState, action) => {
+  export const AnswerReducer = (state = initialState, action) => {
     switch (action.type) {
       case FETCH_ANSWERS_START:
         return {

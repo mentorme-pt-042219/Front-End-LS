@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // import Loader from 'react-loader-spinner';
-import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import { login } from '../actions/index';
 import { withStyles } from '@material-ui/core/styles';
@@ -27,26 +27,27 @@ const styles = theme => ({
 class Login extends React.Component {
 state= {
     credentials: {
-        username: '',
-        password: '',
-    }
+      handle: '',
+      password: ''
+    },
+    errors: {}
 };
 
 handleChange = e => {
-    this.setState({
-        credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-
-        }
-});
-
+  e.persist();
+  this.setState(prevState => ({
+    credentials: {
+      ...prevState.credentials,
+      [e.target.name]: e.target.value
+    }
+  }));
 };
+
 
 login = e => {
     e.preventDefault();
     this.props.login(this.state.credentials).then(() => {
-        this.props.history.push('/QAform');
+        this.props.history.push('/Question');
     });
 };
 
@@ -61,26 +62,25 @@ return (
   <div class="centered">
     
     <img src={require('../components/images/logo.png')}/>
-    {/* <h2>Jane Flex</h2>
-    <p>Some text.</p> */}
+
   </div>
 </div>
 
 <div class="split right">
   <div class="centered">
 
-  <form className={classes.container} noValidate autoComplete="off" onSubmit={this.login}>
+  <form  onSubmit={this.login}>
 
-      <TextField   className={classes.textField}
+      <input
             type="text"
-            name="username"
-            placeholder="username"
+            name="handle"
+            placeholder="handle"
             value={this.state.credentials.username}
             onChange={this.handleChange}
             margin="normal"
             variant="outlined"
           />
-       <TextField   className={classes.textField}
+       <input  
             type="password"
             name="password"
             placeholder="password"
@@ -89,10 +89,8 @@ return (
             margin="normal"
             variant="outlined"
           />
-<button >
-Log-In
-</button >
-<p>Don't Have An Account? <Button className={classes.button} color="secondary">Register</Button></p>
+    <input className="btn-sign-in" type="submit" value="SIGN IN" onClick={this.login}/>
+<p>Don't Have An Account? <Link to='/register' color="secondary">Register</Link></p>
 </form>
   </div>
 </div>
@@ -104,13 +102,7 @@ Log-In
 
 }
 
-const mapStateToProps = ({ loggingIn }) => ({
- 
-    loggingIn
-  });
-  
-  export default connect(
-    mapStateToProps,
-    { login }
-  )(withStyles(styles)(Login));
-  
+export default connect(
+  null,
+  {login}
+)(Login);

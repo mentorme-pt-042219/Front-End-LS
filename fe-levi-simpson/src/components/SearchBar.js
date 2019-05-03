@@ -2,9 +2,9 @@ import React from 'react';
 import {NavLink, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {filterQuestion, logOutUser} from '../actions';
-import './Header.css';
 
-class Header extends React.Component {
+
+class SearchBar extends React.Component {
   state = {
     search: ''
   };
@@ -35,8 +35,8 @@ class Header extends React.Component {
           {path !== '/' && this.props.isAuthenticated && (
             <div className="header">
               <nav>
-                <NavLink to="/questions">Questions</NavLink>
-                <NavLink to="/add-question">Add question</NavLink>
+                <NavLink to="/Question">Questions</NavLink>
+                <NavLink to="/QAform">Add question</NavLink>
                 <NavLink onClick={this.onLogout} to="#">
                   Logout
                 </NavLink>
@@ -61,16 +61,16 @@ class Header extends React.Component {
   }
 }
 
-const mapStateToProps = ({authReducer, questionsReducer}) => {
+const mapStateToProps = ({UserReducer, QuestionReducer}) => {
   return {
-    isAuthenticated: authReducer.isAuthenticated,
-    filteredQuestion: questionsReducer.filteredQuestion
+    isAuthenticated: UserReducer.isAuthenticated,
+    filteredQuestion: QuestionReducer.filteredQuestion
   };
 };
 
-const HeaderWithRouter = withRouter(Header);
+const SearchBarWithRouter = withRouter(SearchBar);
 
 export default connect(
   mapStateToProps,
   {filterQuestion, logOutUser}
-)(HeaderWithRouter);
+)(SearchBarWithRouter);

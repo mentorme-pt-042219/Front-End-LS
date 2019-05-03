@@ -3,17 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import { browserHistory } from 'react-router'
 
-// import { AppNavigation } from "./AppNavigation";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-// import { AppContainer, Navigation, Body, Title } from "./components/containers";
 
-// import { Home } from "./Home";
-// import { Basic } from "./Basic";
-// import { RenderItems } from "./RenderItems";
-// import { RenderItems2 } from "./RenderItems2";
 
-import Home from './components/home';
 import SideNav1 from './components/SideNav';
 import TopNav1 from "./components/TopNav1";
 import QAform1 from './components/QAform';
@@ -21,15 +14,16 @@ import QuestionCards from './components/Questions/QuestionCards'
  import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import {TopNavH} from './components/containers';
 import UserCards from './components/Users/UserCards';
-import VolunteerForm from './components/Users/VolunteerForm';
-import BusinessForm1 from './components/Users/BusinessForm';
-import UserView from './components/Users/UserView';
+
+import Register from './components/Users/BusinessForm';
+import QAform from './components/QAform';
 
 
 import Login from './components/login';
-import ProtectedRoute from './components/ProtectedRoute';
-import { editQuestion } from './actions';
-import UpdateQuestion from './components/UpdateQuestion';
+import PrivateRoute from './components/PrivateRoute';
+import UpdateQuestion from './components/UpdateQuestion'
+import QuestionDetails from './components/QuestionDetails';
+import AddComment from './components/AddAnswer'; 
 
 class App extends React.Component {
   render() {
@@ -38,18 +32,16 @@ class App extends React.Component {
       <div className="App">
    
          <Route path="/" component ={SideNav1}/>
-         <Route path="/" component={Login} />
-         {/* <Route  path="/home" component={Home}/> */}
-         <Route  path="/register" component={Register}/>
-         {/* <Route  path="/Mform" component={VolunteerForm}/> */}
-         <PrivateRoute path="/QAform" component={QAform}/>
-      <PrivateRoute  path="/QArchives" component={QuestionCards}/>
-      <PrivateRoute path="/EditQuestion/:id" component={UpdateQuestion}/>
+         <Route exact path="/" component={Login} />
+     
+         <Route  exact path="/register" component={Register}/>
+         <PrivateRoute  exact path="/Question" component={QuestionCards}/>
+         <PrivateRoute exact path="/QAform" component={QAform}/>
+     
+  <PrivateRoute exact path="/EditQuestion/:id" component={UpdateQuestion}/>
            <PrivateRoute path="/Question/:id" component ={QuestionDetails}/>
-           <PrivateRoute path="/Question/:id/add-comment" component ={QuestionDetails}/>
-            {/* <PrivateRoute  path="/protected" component={UserCards}/> */}
-            {/* <Route path="/UserView" component={UserView}/> */}
-          
+           <PrivateRoute path="/Question/:id/add-comment" component ={AddComment}/>
+    
            
             </div>
         

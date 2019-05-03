@@ -24,8 +24,8 @@ const PrivateRoute = ({
   );
 };
 
-const mapStateToProps = ({authReducer}) => ({
-  isAuthenticated: authReducer.isAuthenticated
+const mapStateToProps = ({UserReducer}) => ({
+  isAuthenticated: UserReducer.isAuthenticated
 });
 
 export default connect(

@@ -6,35 +6,36 @@ import classnames from 'classnames';
 import {getQuestion} from '../../actions/index';
 import {connect} from 'react-redux';
 import QCardsList from './QCardsList';
+import SearchBar from '../SearchBar';
 
 
-const styles = theme => ({
-  card: {
-    maxWidth: 400,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  actions: {
-    display: 'flex',
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
+// const styles = theme => ({
+//   card: {
+//     maxWidth: 400,
+//   },
+//   media: {
+//     height: 0,
+//     paddingTop: '56.25%', // 16:9
+//   },
+//   actions: {
+//     display: 'flex',
+//   },
+//   expand: {
+//     transform: 'rotate(0deg)',
+//     marginLeft: 'auto',
+//     transition: theme.transitions.create('transform', {
+//       duration: theme.transitions.duration.shortest,
+//     }),
+//   },
+//   expandOpen: {
+//     transform: 'rotate(180deg)',
+//   },
  
-    avatar: {
-      // color: grey[900],
-    },
+//     avatar: {
+//       // color: grey[900],
+//     },
   
-});
+// });
 
 class QCards extends React.Component {
   componentDidMount() {
@@ -43,7 +44,7 @@ class QCards extends React.Component {
   render() {
     return (
       <div>
-        {/* <Header /> */}
+       <SearchBar/>
         <div className="QuestionsList">
           <h2>Latest questions </h2>
           <div className="container">

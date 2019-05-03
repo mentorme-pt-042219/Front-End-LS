@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {addAnswer} from '../actions';
 
-import './AddAnswer.css';
+
 
 class AddComment extends Component {
   state = {

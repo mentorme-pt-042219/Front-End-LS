@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
-import {fetchAnswers} from '../actions/';
+import {fetchAnswers} from '../../src/actions/index';
 import Answer from './Answer';
 
 class AnswersList extends React.Component {

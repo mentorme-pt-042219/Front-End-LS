@@ -1,29 +1,37 @@
-import React from "react";
+import React, { Fragment } from "react";
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {deleteQuestion} from '../../actions/index';
 
-
-const QCardsList = props => {
+class  QCardsList extends React.Component {
+  render() {
   return  (
-    <div>
+<div>
+      <Link to={`/Question/${this.props.question.id}`}>
         <div className="Question">
             <div className="header">
-              <h3>{props.question.title}</h3>
+              <h3>{this.props.question.title}</h3>
             </div>
+            
             <div className="body">
-              <p className="author">asked by • {props.question.author}</p>
+              <p className="author">asked by • {this.props.question.author}</p>
               <p>
-                on {moment(props.question.created_at).format('MMM Do YY')}
+                on {moment(this.props.question.created_at).format('MMM Do YY')}
               </p>
-              <p>{props.question.body}</p>
+              </div>
+              
+              <div>
+              <p>{this.props.question.body}</p>
             </div>
-
-                </div>
-                </div>
-  
-  )
-};
+              </div>
+    
+                </Link>
+ 
+  </div>
+  );
+}
+}
 
 const mapStateToProps = ({QuestionReducer}) => {
   return {
@@ -34,4 +42,4 @@ const mapStateToProps = ({QuestionReducer}) => {
 export default connect(
   mapStateToProps,
   {deleteQuestion}
-)(QcardsList);
+)(QCardsList);

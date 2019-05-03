@@ -1,5 +1,5 @@
 import axios from 'axios';
-import axiosWithAuth from '../utils/AxiosAuth';
+import axiosWithAuth from '../utils/axiosAuth';
 
 // const token= 'lambda100500900';
 
@@ -21,7 +21,7 @@ export const regUser = creds => dispatch => {
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 
 export const login = creds => dispatch => {
@@ -33,7 +33,7 @@ export const login = creds => dispatch => {
         dispatch({type: LOGIN_SUCCESS, payload: res.data.token});
         localStorage.setItem('token', res.data.token );
     })
-    .catch(err => console.log(err));
+    .catch(err =>dispatch({type: LOGIN_FAILURE, payload: err}));
 };
 
 
@@ -132,22 +132,22 @@ export const filterQuestion = Q => {
   };
 };
 
-export const  ADD_QUESTION_LOAD= ' ADD_QUESTION_LOAD';
-export const ADD_QUESTION_SUCCESS='ADD_QUESTION_SUCCESS';
+// export const  ADD_QUESTION_LOAD= ' ADD_QUESTION_LOAD';
+// export const ADD_QUESTION_SUCCESS='ADD_QUESTION_SUCCESS';
 
-export const postQuestion = question => dispatch=> {
-  dispatch({type:ADD_QUESTION_LOAD});
+// export const postQuestion = question => dispatch=> {
+//   dispatch({type:ADD_QUESTION_LOAD});
  
- return axiosWithAuth()
-.post('https://mentor-mee.herokuapp.com/questions', question)
-.then(res =>{
-console.log("resolved:", res);
-dispatch({type: ADD_QUESTION_SUCCESS, payload: res.data})
-})
-.catch(err =>console.log(err));
+//  return axiosWithAuth()
+// .post('https://mentor-mee.herokuapp.com/questions', question)
+// .then(res =>{
+// console.log("resolved:", res);
+// dispatch({type: ADD_QUESTION_SUCCESS, payload: res.data})
+// })
+// .catch(err =>console.log(err));
 
 
-};
+// };
 
 export const  ADD_ANSWER_START= ' ADD_QUESTION_LOAD';
 export const ADD_ANSWER_SUCCESS='ADD_QUESTION_SUCCESS';
@@ -171,7 +171,7 @@ export const addQuestion = question => dispatch => {
   dispatch({type: ADD_QUESTION_START});
 
   return axiosWithAuth()
-    .post(URL, question)
+    .post('https://mentor-mee.herokuapp.com/questions', question)
     .then(res => dispatch({type: ADD_QUESTION_SUCCESS, payload: res.data}))
     .catch(err => dispatch({type: ADD_QUESTION_FAILURE, payload: err.message}));
 };

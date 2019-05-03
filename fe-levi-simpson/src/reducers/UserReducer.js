@@ -1,4 +1,4 @@
-import {REG_START, REG_SUCCESS, REG_FAILURE, LOGIN_START, LOGIN_SUCCESS, FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_FAILURE,
+import {REG_START, REG_SUCCESS, REG_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_START, LOGOUT_SUCCESS, LOGOUT_FAILURE, FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_FAILURE,
     LOAD_NEW_FRIEND, NEW_FRIEND_SUCCESS, LOAD_NEW_QUESTION, NEW_QUESTION_SUCCESS, FETCH_FRIEND_UPDATE, FRIEND_UPDATE_SUCCESS, LOAD_DELETE_FRIEND, DELETE_FRIEND_SUCCESS} from "../actions/index";
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
     error: "",
     fethcingMessage: false,
    user: [],
-    logginIn: false,
+  
 
     logingIn: false,
     error: null,
@@ -25,8 +25,6 @@ const initialState = {
         return {
           ...state,
           error: '',
-          errorStatusCode: null,
-          fetchingFriends: false,
           logingIn: true,
           isAuthenticated: false,
         };
@@ -34,7 +32,7 @@ const initialState = {
         return {
           ...state,
           error: '',
-          loggingIn: false,
+          logingIn: false,
           isAuthenticated: true,
         };
         case LOGIN_FAILURE:

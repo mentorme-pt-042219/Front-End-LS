@@ -1,8 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {editQuestion, fetchQuestions} from '../actions';
-import Header from './Header';
+import {editQuestion, getQuestion} from '../actions';
+
+import SearchBar from '../components/SearchBar';
 
 class UpdateQuestion extends Component {
   state = {
@@ -46,7 +47,7 @@ class UpdateQuestion extends Component {
     console.log(this.props);
     return (
       <Fragment>
-        {/* <Header /> */}
+   <SearchBar/>
         <form onSubmit={this.onSubmit}>
           <div className="form-content">
             <div className="form-item">

@@ -3,42 +3,25 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import axiosWithAuth from '../utils/AxiosAuth';
+import axiosWithAuth from '../utils/axiosAuth';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux";
-import {postQuestion, getQuestion} from '../actions/index';
+import {addQuestion, getQuestion} from '../actions/index';
 import { withRouter } from 'react-router'
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  },
-  dense: {
-    marginTop: 16,
-  },
-  menu: {
-    width: 200,
-  },
-});
 
 
 class QAform extends React.Component {
   state = {
     question:{
-
-title:"",
+      title:"",
 body:"",
 author: "",
 FK_user_id:null
-  // Files:"",
+ 
 }
   }
 
@@ -46,6 +29,7 @@ FK_user_id:null
     axiosWithAuth()
       .get('https://mentor-mee.herokuapp.com/auth/decode')
       .then(res =>
+       
         this.setState(prevState => ({
           question: {
             ...prevState.question,
@@ -68,13 +52,13 @@ handleChange = e => {
     }));
 };
 
-// componentWillUnmount() {
-//   this.props.getQuestion();
-// }
+componentWillUnmount() {
+  this.props.getQuestion();
+}
 
 postQuestion = e => {
   e.preventDefault();
-     this.props.postQuestion(this.state.qestion);
+     this.props.addQuestion(this.state.question);
      this.setState({
       question: {
         
@@ -83,41 +67,44 @@ postQuestion = e => {
        
          }
      });
-     this.props.history.push('/QArchives');
+     this.props.history.push('/Question');
     };
  
     render() {
-    const { classes } = this.props;
+ 
     console.log(this.state.question.author);
     return (
   
 <div>
-      <Typography gutterBottom variant="h6">
+      <h2>
       ASK A MENTOR
-      </Typography>
-       <Divider variant="middle" />
-      <form onSubmit={this.postQuestion} className={classes.container} noValidate autoComplete="off">
-      <input
+      </h2>
+       <form className="AddQuestion" onSubmit={this.postQuestion}>
+          <div className="form-content">
+            <div className="form-item">
+              <input
                 onChange={this.handleChange}
                 type="text"
                 name="title"
                 value={this.state.question.title}
                 placeholder="Add question..."
               />
-
-       <TextField id="outlined-name"
-          label="body"
-          name="body"
-          className={classes.textField}
-          value={this.state.question.body}
-          onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
-        />
-
-
-  <button onClick={this.postQuestion} type="submit"> Add Question</button>
-      </form>
+            </div>
+            <div className="form-item">
+              <label htmlFor="body">Give more details</label>
+              <textarea
+                onChange={this.handleChange}
+                name="body"
+                cols="30"
+                rows="10"
+                value={this.state.question.body}
+                placeholder="Details..."
+              />
+            </div>
+            <input type="submit" value="Add" />
+          </div>
+        </form>
+     
       </div>
     );
   }
@@ -126,8 +113,8 @@ postQuestion = e => {
 
 export default connect(
   null,
-  {postQuestion, getQuestion}
-)((withStyles)(styles)(QAform));
+  {addQuestion, getQuestion}
+)(QAform);
 
 // export default connect(
 //   mapStateToProps,
