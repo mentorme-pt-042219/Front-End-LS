@@ -1,1 +1,11 @@
 
+[build]
+  base    = "./fe-levi-simpson"
+  publish = "./fe-levi-simpson/build"
+  command = "yarn build"
+
+
+    [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
