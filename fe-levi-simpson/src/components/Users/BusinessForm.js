@@ -76,48 +76,48 @@ postMessage = e => {
     const { classes } = this.props;
 
     return (
-<div>
-      <Typography gutterBottom variant="h6">
-   NEW USER REGISTER
-      </Typography>
-       <Divider variant="middle" />
-      <form className={classes.container} noValidate autoComplete="off">
-        <TextField
-       id="outlined-name"
-          label="UserName"
+      <div className="LWrapper">
+      <div className="Login">
+      <h1 className="h1Login">
+   Register
+    </h1>
+ 
+      <form onSubmit={this.postMessage}>
+      <div className="loginInputC">
+      <input className="loginInput"
+        type="text"
+        
           name="handle"
-          className={classes.textField}
+          placeholder="User Name"
           value={this.state.credentials.handle}
           onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
+        
         />
 
-<TextField
-       id="outlined-name"
+<input className="loginInput"
+    type="text"
           label="email"
           name="email"
-          className={classes.textField}
+          placeholder="Email"
           value={this.state.credentials.email}
           onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
+        
         />
 
-<TextField
+<input className="loginInput"
        id="outlined-name"
-          label="password"
+        type="password"
           name="password"
-          className={classes.textField}
+          placeholder="Password"
           value={this.state.credentials.password}
           onChange={this.handleChange}
-          margin="normal"
-          variant="outlined"
+      
         />
+</div>
 
-
-  <button onClick={this.postMessage} type="submit"> Register</button>
+<input className="signupB" type="submit" value="Register" onClick={this.postMessage}/>
       </form>
+      </div>
       </div>
     );
   }

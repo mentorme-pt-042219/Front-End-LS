@@ -57,13 +57,18 @@ login = e => {
 render() {
   const { classes } = this.props;
 return (
+  <div>
+   
   <div className="LWrapper">
 <div className="Login">
-<div>
-{/* <img src={require('./images/icon2.png')} /> */}
-</div>
-<h1 className="h1Login">Sign In</h1>
 
+{/* <div className= "signHeader"> */}
+{/* <div className="logo">
+    <img className="iconL" src={require('./images/icon.png')} />
+      </div> */}
+
+<h1 className="h1Login">Sign In</h1>
+{/* </div> */}
   <form  onSubmit={this.login}>
 <div className="loginInputC">
       <input className="loginInput"
@@ -88,6 +93,7 @@ return (
     <input className="signupB" type="submit" value="SIGN IN" onClick={this.login}/>
 <p className="loginText">Don't Have An Account? <Link to='/register' className="registerLink">REGISTER </Link></p>
 </form>
+  </div>
   </div>
   </div>
 )
