@@ -43,11 +43,14 @@ class QCards extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="QCardsC">
+
+        <div className="SContainer">
        <SearchBar/>
-        <div className="QuestionsList">
-          <h2>Latest questions </h2>
-          <div className="container">
+       </div>
+        <div className="QlistC">
+          <h2>Question Feed </h2>
+          <div className="Qlist">
             {
               !this.props.isFetching &&
               this.props.filteredQuestions.length >= 0 && (
@@ -64,7 +67,9 @@ class QCards extends React.Component {
                 </div>
               )}
           </div>
+
         </div>
+
       </div>
     );
   }

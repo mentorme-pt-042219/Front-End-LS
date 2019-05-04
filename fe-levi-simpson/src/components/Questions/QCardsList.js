@@ -9,9 +9,13 @@ class  QCardsList extends React.Component {
   render() {
   return  (
     <div className="cardContainer">
-<div className="card">
-      <Link to={`/Question/${this.props.question.id}`}>
+
+<div className="bubble" >
+
+
+      <Link className="DetailsLink" to={`/Question/${this.props.question.id}`}>
         <div className="Question">
+
             <div className="header">
               <h2>{this.props.question.title}</h2>
           
@@ -30,10 +34,11 @@ class  QCardsList extends React.Component {
             </div>
          
 
-          
-              </div>
+            </div>
+           
                 </Link>
- 
+                
+              
   </div>
   </div>
   );

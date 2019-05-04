@@ -568,3 +568,23 @@
     padding: 30px;
     border-radius: 4px;
   } 
+
+  .card {
+ 
+    border: 1px solid red; 
+    background: #E2E8ED;
+      border-radius: 5%;
+      display: flex;
+      min-height: 400px;
+      margin: 1rem;
+      padding: 1rem;
+     width: 400px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      transition: 0.3s;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    position: relative;
+    } 
+    

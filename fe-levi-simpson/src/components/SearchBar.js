@@ -33,22 +33,24 @@ class SearchBar extends React.Component {
         <div className="container">
           <div className="logo" />
           {path !== '/' && this.props.isAuthenticated && (
-            <div className="header1">
-              <nav>
-                <NavLink to="/Question">Questions</NavLink>
-                <NavLink to="/QAform">Add question</NavLink>
-                <NavLink onClick={this.onLogout} to="#">
-                  Logout
+            <div className="SHeader">
+            
+              <NavLink className="Nav" onClick={this.onLogout} to="#">
+                 Log Out
                 </NavLink>
-              </nav>
-              <form>
+                <NavLink className="Nav" activeClassName="ActNav"  exact to="/Question">Question Feed</NavLink>
+                <NavLink className="Nav"  activeClassName="ActNav" exact to="/QAform">Add Question</NavLink>
+             
+            
+              <form className="searchForm">
                 <div className="form-content">
-                  <i class="fas fa-search" />
+                  <i class="fas fa-search " />
                   <input
+                  className="SearchInput"
                     onChange={this.onChange}
                     type="text"
                     name="search"
-                    placeholder="Search by keywords..."
+                    placeholder="Search keywords..."
                     value={this.state.search}
                   />
                 </div>

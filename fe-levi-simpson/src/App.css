@@ -1,5 +1,5 @@
 .App {
-  background-image: linear-gradient(to right top, #5574f7, #4086fd, #3196ff, #31a4ff, #42b2ff, #46b3ff, #4ab5ff, #4eb6ff, #46abff, #45a0ff, #4c94fd, #5887f9);
+  /* background-image: linear-gradient(to right top, #5574f7, #4086fd, #3196ff, #31a4ff, #42b2ff, #46b3ff, #4ab5ff, #4eb6ff, #46abff, #45a0ff, #4c94fd, #5887f9); */
   /* height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -56,7 +56,11 @@ margin-right: 6%;
   align-self: center;
   margin: 0 auto;
   margin-top: 100px;
-
+  background-image: linear-gradient(to right top, #5574f7, #4086fd, #3196ff, #31a4ff, #42b2ff, #46b3ff, #4ab5ff, #4eb6ff, #46abff, #45a0ff, #4c94fd, #5887f9);
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  /* display: inline-block; */
 }
 
 .Login{
@@ -90,7 +94,7 @@ color: white;
 font-family: 'Concert One', cursive;
 }
 
-::placeholder{
+.loginInput::placeholder{
   color:  rgba(255, 255,255, .5);
 }
 
@@ -161,25 +165,35 @@ margin-top: 20px;
 }
 
 
-
-.card {
-/* 
-border: 1px solid red; */
-
-  border-radius: 5%;
-  display: flex;
-  min-height: 400px;
-  margin: 1rem;
-  padding: 1rem;
- width: 400px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: 0.3s;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
+.bubble:nth-child(odd) 
+{
+position: relative;
+width: 400px;
+min-height: 400px;
+padding: 1rem;
+margin: 1rem;
+background: #E2E8ED;
+-webkit-border-radius: 32px;
+-moz-border-radius: 32px;
+border-radius: 32px;
 }
+
+.bubble:nth-child(odd):after 
+{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 15px 15px;
+  border-color: #E2E8ED transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -15px;
+  left: 82px;
+}
+
+
+
 
 
 
@@ -219,4 +233,100 @@ border: 1px solid red; */
   width: 90%;
   margin: 0 auto;
   margin-top: 20%;
+}
+
+{/*QCards.js*/}
+
+.SContainer{
+  /* background: linear-gradient(to right top, #5574f7, #4086fd, #3196ff, #31a4ff, #42b2ff, #46b3ff, #4ab5ff, #4eb6ff, #46abff, #45a0ff, #4c94fd, #5887f9);*/
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);  */
+
+}
+
+.QlistC{
+ 
+background: #FFFFFF;
+}
+
+.QlistC h2{
+  color: #5574F7;
+}
+
+.SearchInput::placeholder{
+  color: #60C3FF;
+}
+
+.SHeader{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  margin-bottom: 15px;
+
+}
+
+.Nav{
+  text-decoration: none;
+  color:#60C3FF;
+
+ 
+  /* border-radius: 10px;  */
+  height: 40px;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+}
+
+.Nav:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+ border-radius: 10px;
+ background: rgba(255, 255,255, .5);
+ color:#60C3FF;
+}
+
+.ActNav{
+  background: linear-gradient(to right top, #5574f7, #4086fd, #3196ff, #31a4ff, #42b2ff, #46b3ff, #4ab5ff, #4eb6ff, #46abff, #45a0ff, #4c94fd, #5887f9);
+  color: white;
+  border: 1px solid rgba(255, 255,255, .5);
+  border-radius: 10px; 
+  font-weight: bold;
+  border:#5574F7;
+     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+}
+
+.searchForm{
+  margin-right: 3%;
+}
+
+.SearchInput{
+  /* border-radius: 20px; */
+  height: 60px;
+  width: 90%;
+  /* margin-top: 8%; */
+
+  font-size: 1.2rem;
+  text-align: center;
+   outline: none;
+border: none transparent;
+border-color: transparent;
+background: transparent;
+/* border-bottom: 1px solid rgba(255, 255,255, .5);
+color: white; */
+border-bottom: 1px solid #60C3FF;
+color: #60C3FF;
+font-family: 'Concert One', cursive;
+}
+
+
+.form-content {
+  color: #60C3FF;
+}
+
+.DetailsLink{
+  text-decoration: none;
+  color: #4C5264;
 }
