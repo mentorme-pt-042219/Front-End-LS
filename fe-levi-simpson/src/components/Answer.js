@@ -6,6 +6,7 @@ import {deleteAnswer} from '../../src/actions/index';
 
 
 
+
 class Answer extends React.Component {
   state = {
     FK_user_id: ''
@@ -25,12 +26,11 @@ class Answer extends React.Component {
   };
   render() {
     return (
-      <div className="Answer">
-        <div className="body">
-          <div className="info">
-            <p className="author">{this.props.answer.author}</p>
-            <p>{moment(this.props.answer.created_at).format('MMM Do YY')}</p>
-          </div>
+
+        <div className="cardContainer">
+          <div className="card">
+          
+     
           <div className="content">
             <p>{this.props.answer.body}</p>
             {this.props.answer.FK_user_id === this.state.FK_user_id && (
@@ -42,8 +42,10 @@ class Answer extends React.Component {
               </button>
             )}
           </div>
+          <p className="author">Answered by &#5867; {this.props.answer.author}</p>
+            <p>On {moment(this.props.answer.created_at).format('MMM Do YY')}</p>
         </div>
-      </div>
+        </div>
     );
   }
 }

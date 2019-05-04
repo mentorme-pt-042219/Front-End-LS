@@ -57,45 +57,39 @@ login = e => {
 render() {
   const { classes } = this.props;
 return (
+  <div className="LWrapper">
 <div className="Login">
-<div class="split left">
-  <div class="centered">
-    
-    <img src={require('../components/images/logo.png')}/>
-
-  </div>
+<div>
+{/* <img src={require('./images/icon2.png')} /> */}
 </div>
-
-<div class="split right">
-  <div class="centered">
+<h1 className="h1Login">Sign In</h1>
 
   <form  onSubmit={this.login}>
-
-      <input
+<div className="loginInputC">
+      <input className="loginInput"
             type="text"
             name="handle"
-            placeholder="handle"
+            placeholder="User Name"
             value={this.state.credentials.username}
             onChange={this.handleChange}
             margin="normal"
             variant="outlined"
           />
-       <input  
+       <input  className="loginInput"
             type="password"
             name="password"
-            placeholder="password"
+            placeholder="Password"
             value={this.state.credentials.password}
             onChange={this.handleChange}
             margin="normal"
             variant="outlined"
           />
-    <input className="btn-sign-in" type="submit" value="SIGN IN" onClick={this.login}/>
-<p>Don't Have An Account? <Link to='/register' color="secondary">Register</Link></p>
+          </div>
+    <input className="signupB" type="submit" value="SIGN IN" onClick={this.login}/>
+<p className="loginText">Don't Have An Account? <Link to='/register' className="registerLink">REGISTER </Link></p>
 </form>
   </div>
-</div>
-
-</div>
+  </div>
 )
 
 }

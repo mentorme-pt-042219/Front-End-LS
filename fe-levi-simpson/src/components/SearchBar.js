@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
         <div className="container">
           <div className="logo" />
           {path !== '/' && this.props.isAuthenticated && (
-            <div className="header">
+            <div className="header1">
               <nav>
                 <NavLink to="/Question">Questions</NavLink>
                 <NavLink to="/QAform">Add question</NavLink>

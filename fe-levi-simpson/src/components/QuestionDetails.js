@@ -38,26 +38,33 @@ class QuestionDetails extends Component {
     return (
       <div>
    <SearchBar/>
-        <div className="QuestionDetails">
-          <div className="title">
-            <div className="header">
-              <h2>{question.title}</h2>
-            </div>
-            <Link to={`/Question/${question.id}/add-comment`}>
+
+        <div className="cardContainer">
+  
+        <div className="card">
+
+
+        <Link className="addAnswer" to={`/Question/${question.id}/add-comment`}>
               <i class="fas fa-plus" /> Add answer
             </Link>
-          </div>
+        
+            <div className="headerQDetails">
+              <h2>{question.title}</h2>
+           
           <div className="body">
             <p className="body">{question.body}</p>
+            
             <div className="details">
+              
               <div className="info">
                 <p className="author">asked by • {question.author}</p>
                 <p>on {moment(question.created_at).format('MMM Do YY')}</p>
               </div>
+             
               <div className="buttons">
                 {question.FK_user_id === this.state.FK_user_id && (
                   <Link to={`/EditQuestion/${question.id}`}>
-                    <i class="fas fa-edit" />
+                    <i class="fas fa-edit fa-2x" />
                   </Link>
                 )}
                 {question.FK_user_id === this.state.FK_user_id && (
@@ -65,19 +72,23 @@ class QuestionDetails extends Component {
                     onClick={() => this.onDelete(question.id)}
                     to="/Question"
                   >
-                    <i class="far fa-trash-alt" />
+                    <i class="far fa-trash-alt fa-2x" />
                   </Link>
                 )}
               </div>
-            </div>
-          </div>
+            
+            </div> {/*dtails*/}
+          </div>  {/*body*/}
           <div className="answer-title">
-            <h4>Answers</h4>
-          </div>
+            <h1>Answers</h1>
+          </div>  {/*headerQdetails*/}
           <div className="answers-list" />
           <AnswersList answers={this.props.questions.answers} {...this.props} />
-        </div>
-      </div>
+        </div>  {/*answer list*/}
+        </div> {/*card*/}
+        </div> {/*card container*/}
+
+    </div>
     );
   }
 }

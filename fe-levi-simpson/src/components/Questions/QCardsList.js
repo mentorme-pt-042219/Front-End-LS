@@ -3,15 +3,19 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {deleteQuestion} from '../../actions/index';
+import '../../App.css';
 
 class  QCardsList extends React.Component {
   render() {
   return  (
-<div>
+    <div className="cardContainer">
+<div className="card">
       <Link to={`/Question/${this.props.question.id}`}>
         <div className="Question">
             <div className="header">
-              <h3>{this.props.question.title}</h3>
+              <h2>{this.props.question.title}</h2>
+          
+              <i class="far fa-folder-open fa-2x "></i>
             </div>
             
             <div className="body">
@@ -24,10 +28,13 @@ class  QCardsList extends React.Component {
               <div>
               <p>{this.props.question.body}</p>
             </div>
+         
+
+          
               </div>
-    
                 </Link>
  
+  </div>
   </div>
   );
 }
