@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import axiosWithAuth from '../utils/axiosAuth';
+import axiosWithAuth from './utils/axiosAuth';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {addAnswer} from '../actions';
