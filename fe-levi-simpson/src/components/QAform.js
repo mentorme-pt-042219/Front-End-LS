@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import axiosWithAuth from '../../src/utils/axiosAuth';
+import axiosWithAuth from './utils/axiosAuth';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';

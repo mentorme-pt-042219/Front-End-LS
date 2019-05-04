@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import axiosWithAuth from '../utils/axiosAuth';
+import axiosWithAuth from './utils/axiosAuth';
 import {deleteQuestion, fetchAnswers} from '../actions';
 import AnswersList from './AnswersList';
 import SearchBar from '../components/SearchBar';

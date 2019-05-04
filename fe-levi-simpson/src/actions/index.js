@@ -1,5 +1,5 @@
 import axios from 'axios';
-import axiosWithAuth from '../utils/axiosAuth';
+import axiosWithAuth from '../components/utils/axiosAuth';
 
 // const token= 'lambda100500900';
 
