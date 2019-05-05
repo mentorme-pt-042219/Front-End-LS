@@ -1,50 +1,53 @@
-import { Typography } from "@material-ui/core";
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import axiosWithAuth from './utils/axiosAuth';
 
-import { render } from "react-dom";
-import { Parallax } from "react-parallax";
 
-const styles = {
-  fontFamily: "sans-serif",
-  textAlign: "center"
-};
-const insideStyles = {
-  background: "white",
-  padding: 20,
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%,-50%)"
-};
 
-const image1 =
-  "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80";
 
 class Home extends React.Component {
-    render() {
-      return (
-        <div style={styles}>
-        {/* <Hello name="Parallax" /> */}
-        <Parallax bgImage={image1} rength={-100}>
-          <div style={{ height: 500 }}>
-            <div style={insideStyles}>HTML inside the parallax</div>
-          </div>
-        </Parallax>
-        </div>
-      );
-    }
+  state={
+    author: ""
   }
+
+  componentDidMount() {
+    axiosWithAuth()
+      .get('https://mentor-mee.herokuapp.com/auth/decode')
+      .then(res =>
+       
+        this.setState(prevState => ({
+         author: {
+           
+            author: res.data.handle,
+           
+          }
+        }))
+      )
+      .catch(err => console.log(err));
+  }
+
+
+
+  render() {
+ 
+    
+    return ( 
+    
+    <div className="LWrapper">
+<div className="Login">
+<h1>WELCOME, {this.state.author}</h1>
+
+
+</div>
+
+    </div>
+    )
+  }
+}
   
-  // export const createApp = () => {
-  //   return class SideNavApp extends React.Component {
-  //     render() {
-  //       return (
-  //         <Router>
-  //           <App />
-  //         </Router>
-  //       );
-  //     }
-  //   };
-  // }
-  
+
+
   export default Home;

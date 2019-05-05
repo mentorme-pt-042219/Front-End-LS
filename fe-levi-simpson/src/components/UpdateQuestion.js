@@ -48,33 +48,53 @@ class UpdateQuestion extends Component {
     return (
       <Fragment>
    <SearchBar/>
+
+   <div className="formWrapC">
+<div className="formWrap">
+<div>
+      <h3 className="Qh3">What Would You Like To Edit?</h3>
+     </div>
         <form onSubmit={this.onSubmit}>
-          <div className="form-content">
-            <div className="form-item">
-              <label htmlFor="title">Question title</label>
+         
+          <div className="EditInputC">
+           
+           <div>
               <input
+               className="SearchInput2"
                 onChange={this.onChange}
                 type="text"
                 name="title"
                 value={this.state.question.title}
-                placeholder="Question title..."
+                placeholder="Question Title"
               />
-            </div>
-            <div className="form-item">
-              <label htmlFor="body">Question Details</label>
-              <textarea
+          </div>
+
+          <div>
+              <input
+          className="SearchInput2"
                 onChange={this.onChange}
                 name="body"
-                cols="30"
-                rows="10"
+
                 value={this.state.question.body}
-                placeholder="Details..."
+                placeholder="Details"
               />
+              </div>
+
+</div>
+         
+         <div className="Abtn">
+         <div>
+         <Link className="cancelL" to={`/Question/${this.props.match.params.id}`}>Cancel</Link>
+         </div>
+         <div>
+                <i class="far fa-arrow-alt-circle-right fa-3x" onClick={this.onSubmit}></i>
+                </div>
+          
             </div>
-            <input type="submit" value="Edit" />
-            <Link to={`/questions/${this.props.match.params.id}`}>Cancel</Link>
-          </div>
-        </form>
+</form>
+
+</div>
+</div>
       </Fragment>
     );
   }

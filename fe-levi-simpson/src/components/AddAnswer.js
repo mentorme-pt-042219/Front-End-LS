@@ -57,32 +57,46 @@ class AddAnswer extends Component {
 
   render() {
     return (
-      <Fragment>
-        <div className="AddAnswer">
+      <div className="formWrap1">
+        <div className="formWrapC1">
           <form onSubmit={this.onSubmit}>
-            <div className="form-content">
-              <div className="form-item">
-                <textarea
+         
+          <div>
+            <h3 className="Qh3">Send An Answer</h3>
+            </div>
+            
+                <input
+                  className="SearchInput2"
                   required
                   type="text"
                   onChange={this.onChange}
                   name="body"
-                  cols="30"
-                  rows="10"
+                
                   value={this.state.answer.body}
-                  placeholder="Add answer..."
+                  placeholder="Answer"
                 />
-              </div>
-              <div className="btns">
-                <input type="submit" value="Add" />
-                <Link to={`/Question/${this.props.match.params.id}`}>
+        
+            
+              <div className="Abtn">
+            
+                
+                <div>
+                <Link className="cancelL" to={`/Question/${this.props.match.params.id}`}>
                   Cancel
                 </Link>
+                </div>
+
+                <div>
+                <i class="far fa-arrow-alt-circle-right fa-3x" onClick={this.onSubmit}></i>
+                </div>
+              
               </div>
-            </div>
+            
+         
+          
           </form>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

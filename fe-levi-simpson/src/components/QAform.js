@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { connect } from "react-redux";
 import {addQuestion, getQuestion} from '../actions/index';
 import { withRouter } from 'react-router'
-
+import {Link} from 'react-router-dom';
 
 
 class QAform extends React.Component {
@@ -78,19 +78,29 @@ postQuestion = e => {
 <div>
   
   <div className="blueHead">
+  <div className="logo3">
+    <img className="iconL" src={require('./images/logoM.png')} />
+      </div> 
+      {/* <div className="AuthorL">
       <h2>
      {this.state.question.author}
       </h2>
+      </div> */}
      </div>
+
 <div className="formWrapC">
 <div className="formWrap">
+<div className="askBA">
+           <h1>Welcome Back, {this.state.question.author}</h1>
+            </div>
+     
      <div>
       <h3 className="Qh3">What Would You Like Help With?</h3>
      </div>
 
        <form  onSubmit={this.postQuestion}>
           
-     <div className="AddQ">
+ 
            
               <input
               className="SearchInput2"
@@ -104,7 +114,7 @@ postQuestion = e => {
            
            
             <div>
-            <h3 className="Qh3">Add More Details?</h3>
+            <h3 className="Qh3">Add More Details:</h3>
             </div>
 
 
@@ -120,12 +130,16 @@ postQuestion = e => {
                 placeholder="Details"
               />
           
-           <div>
-            <button type="submit" value="Add" className="askB"><i class="fas fa-user-plus fa-3x"></i> Ask</button>
-            </div>
-            </div>
+        
         
         </form>
+
+
+<div className="askB" onClick={this.postQuestion}>
+           <h3><i class="fas fa-user-plus fa-3x"></i> Ask</h3>
+            </div> 
+       
+        
         </div>
         </div>
      </div>
@@ -144,3 +158,8 @@ export default connect(
 //   mapStateToProps,
 //   {postQuestion, getQuestion} 
 // )((withStyles(styles)(QAform1)));
+
+
+{/* <div className="askB" onClick={this.postQuestion}>
+           <h3><i class="fas fa-user-plus fa-3x"></i> Ask</h3>
+            </div> */}

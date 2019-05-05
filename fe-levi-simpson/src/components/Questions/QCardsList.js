@@ -10,6 +10,7 @@ class  QCardsList extends React.Component {
   return  (
     <div className="cardContainer" >
 
+ <Link className="DetailsLink" to={`/Question/${this.props.question.id}`}>
 <div className="bubble" >
 
 
@@ -37,12 +38,14 @@ class  QCardsList extends React.Component {
                 
               
   </div>
+  </Link>
+
+
+
   <div className="AuthorFooter">
   <p className="authorDate">Asked by • {this.props.question.author} On  {moment(this.props.question.created_at).format('MMM Do YY')}</p> 
  
-              {/* <p className="pMoment">
-                On {moment(this.props.question.created_at).format('MMM Do YY')}
-              </p> */}
+             
   </div>
 
   </div>

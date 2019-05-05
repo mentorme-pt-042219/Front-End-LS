@@ -36,59 +36,87 @@ class QuestionDetails extends Component {
 
     console.log(question);
     return (
-      <div>
+      <div >
    <SearchBar/>
 
-        <div className="cardContainer">
+     
   
-        <div className="card">
+      
 
-
+{/* 
         <Link className="addAnswer" to={`/Question/${question.id}/add-comment`}>
               <i class="fas fa-plus" /> Add answer
-            </Link>
-        
-            <div className="headerQDetails">
+            </Link> */}
+
+<div className="formWrap1">
+<div className="formWrapC1">
+
+
+            <div className="cardContainer">
+        <div>
+            <div className="bubbleQD">
               <h2>{question.title}</h2>
            
           <div className="body">
             <p className="body">{question.body}</p>
+            </div>  {/*body*/}
             
-            <div className="details">
+     
               
-              <div className="info">
-                <p className="author">asked by • {question.author}</p>
-                <p>on {moment(question.created_at).format('MMM Do YY')}</p>
-              </div>
              
-              <div className="buttons">
+              <div className="QDBW">
+              
+              <div clasName="Qlink">
                 {question.FK_user_id === this.state.FK_user_id && (
-                  <Link to={`/EditQuestion/${question.id}`}>
-                    <i class="fas fa-edit fa-2x" />
+                  <Link className="editLink" to={`/EditQuestion/${question.id}`}>
+                    <i className="Qicon" class="fas fa-edit fa-2x" />
                   </Link>
                 )}
+             
+                </div>
+                <div className="Qlink">
                 {question.FK_user_id === this.state.FK_user_id && (
-                  <Link
+                  <Link className="deleteLink"
                     onClick={() => this.onDelete(question.id)}
                     to="/Question"
                   >
-                    <i class="far fa-trash-alt fa-2x" />
+                    <i className="Ticon"class="far fa-trash-alt fa-2x" />
                   </Link>
                 )}
+                   </div>
+              
               </div>
             
-            </div> {/*dtails*/}
-          </div>  {/*body*/}
-          <div className="answer-title">
-            <h1>Answers</h1>
-          </div>  {/*headerQdetails*/}
-          <div className="answers-list" />
-          <AnswersList answers={this.props.questions.answers} {...this.props} />
-        </div>  {/*answer list*/}
-        </div> {/*card*/}
-        </div> {/*card container*/}
+         
+        
+          </div> {/*bubbleQD*/}
 
-    </div>
+       
+          <div className="AuthorFooter2">
+  <p className="authorDate">Asked by • {question.author} On  {moment(question.created_at).format('MMM Do YY')}</p> 
+          </div> 
+</div>
+
+
+          <div className="answer">
+           
+          </div>  
+          <div />
+          <AnswersList answers={this.props.questions.answers} {...this.props} />
+     </div>
+
+     
+    
+            
+    <div className="askB" >
+    <Link className="addAnswer" to={`/Question/${question.id}/add-comment`}>
+           <h3><i class="fas fa-user-plus fa-3x"></i> Answer</h3>
+           </Link>
+            </div>
+     </div>
+     </div>
+   
+     </div>
     );
   }
 }

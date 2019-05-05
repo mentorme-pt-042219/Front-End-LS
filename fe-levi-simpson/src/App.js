@@ -20,6 +20,7 @@ import QAform from './components/QAform';
 
 
 import Login from './components/login';
+
 import PrivateRoute from './components/PrivateRoute';
 import UpdateQuestion from './components/UpdateQuestion'
 import QuestionDetails from './components/QuestionDetails';
@@ -33,7 +34,7 @@ class App extends React.Component {
    
          {/* <Route path="/" component ={SideNav1}/> */}
          <Route exact path="/" component={Login} />
-     
+
          <Route  exact path="/register" component={Register}/>
          <PrivateRoute  exact path="/Question" component={QuestionCards}/>
          <PrivateRoute exact path="/QAform" component={QAform}/>

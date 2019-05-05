@@ -26,25 +26,29 @@ class Answer extends React.Component {
   };
   render() {
     return (
-
-        <div className="cardContainer">
-          <div className="card">
+<div>
+      
+          <div  className="bubbleAD">
           
      
           <div className="content">
             <p>{this.props.answer.body}</p>
             {this.props.answer.FK_user_id === this.state.FK_user_id && (
-              <button
-                className="btn"
-                onClick={() => this.onDelete(this.props.answer.id)}
-              >
-                <i class="far fa-trash-alt fa-lg" />
-              </button>
+              <div className="Aicon">
+                <i className="Ticon" class="far fa-trash-alt fa-2x"    onClick={() => this.onDelete(this.props.answer.id)} />
+              </div>
             )}
           </div>
-          <p className="author">Answered by &#5867; {this.props.answer.author}</p>
-            <p>On {moment(this.props.answer.created_at).format('MMM Do YY')}</p>
-        </div>
+         
+          
+       
+        </div> {/*bubble*/}
+        <div className="AuthorFooter2">
+  <p className="authorDate">Answered by • {this.props.answer.author} On  {moment(this.props.answer.created_at).format('MMM Do YY')}</p> 
+ 
+           </div>
+
+     
         </div>
     );
   }

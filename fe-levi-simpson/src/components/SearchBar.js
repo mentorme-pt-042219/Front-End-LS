@@ -46,7 +46,7 @@ class SearchBar extends React.Component {
              
             
               <form className="searchForm">
-                <div className="form-content">
+                <div className="FCH">
                   <i class="fas fa-search " />
                   <input
                   className="SearchInput"
