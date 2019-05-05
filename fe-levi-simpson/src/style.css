@@ -571,7 +571,7 @@
 
   .card {
  
-    border: 1px solid red; 
+   
     background: #E2E8ED;
       border-radius: 5%;
       display: flex;
@@ -588,3 +588,49 @@
     position: relative;
     } 
     
+    /* 
+
+
+
+
+
+
+
+ .header{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-around;
+ margin: 10%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.Question{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.headerQDetails{
+  display: flex;
+  flex-direction: column;
+}
+
+.addAnswer{
+  margin-top: 20px;
+}
+
+.answer-title{
+  margin-top: 20%;
+  border: 1px solid black;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20%;
+}
+*/

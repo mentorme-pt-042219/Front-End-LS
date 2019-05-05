@@ -76,29 +76,39 @@ postQuestion = e => {
     return (
   
 <div>
+  <div className="blueHead">
       <h2>
-      ASK A MENTOR
+     {this.state.question.author}
       </h2>
+     </div>
+     <div>
+      <h3 className="Qh3">What Would You Like Help With?</h3>
+     </div>
        <form className="AddQuestion" onSubmit={this.postQuestion}>
-          <div className="form-content">
+          <div className="form-content2">
             <div className="form-item">
               <input
+              className="SearchInput2"
                 onChange={this.handleChange}
                 type="text"
                 name="title"
                 value={this.state.question.title}
-                placeholder="Add question..."
+                placeholder="Question"
               />
             </div>
+            <div>
+            <h3 className="Qh3">Add More Details?</h3>
+            </div>
             <div className="form-item">
-              <label htmlFor="body">Give more details</label>
-              <textarea
+       
+         <input
+              className="SearchInput2"
                 onChange={this.handleChange}
                 name="body"
                 cols="30"
                 rows="10"
                 value={this.state.question.body}
-                placeholder="Details..."
+                placeholder="Details"
               />
             </div>
             <input type="submit" value="Add" />

@@ -49,7 +49,7 @@ class QCards extends React.Component {
        <SearchBar/>
        </div>
         <div className="QlistC">
-          <h2>Question Feed </h2>
+          {/* <h2>Question Feed </h2> */}
           <div className="Qlist">
             {
               !this.props.isFetching &&
@@ -58,6 +58,7 @@ class QCards extends React.Component {
                   {this.props.filteredQuestions.map(q => {
                     return (
                       <QCardsList
+                     
                         key={q.id}
                         question={q}
                         questions={this.props.questions}

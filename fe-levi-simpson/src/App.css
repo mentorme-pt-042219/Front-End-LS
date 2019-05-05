@@ -29,10 +29,10 @@ body{
 }
 
 .logo{
-  margin-top: 10px;
 
-  width: 100px;
-  height: 70px;
+padding-top: 1.4%;
+  width: 20%;
+  height: 100px;
 
 }
 
@@ -155,92 +155,68 @@ color:  rgba(255, 255,255, .5);
 }
 
 .cardContainer{
-  display: flex;
+    display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-margin-top: 20px;
+margin-top: 20px;  
 
-/* border: 1px solid red; */
-}
+/* 
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+flex-wrap: wrap;
+align-items: flex-start;
+margin-top: 20px; 
+width: 100%; */
 
-
-.bubble:nth-child(odd) 
-{
-position: relative;
-width: 400px;
-min-height: 400px;
-padding: 1rem;
-margin: 1rem;
-background: #E2E8ED;
--webkit-border-radius: 32px;
--moz-border-radius: 32px;
-border-radius: 32px;
-}
-
-.bubble:nth-child(odd):after 
-{
-  content: '';
-  position: absolute;
-  border-style: solid;
-  border-width: 0 15px 15px;
-  border-color: #E2E8ED transparent;
-  display: block;
-  width: 0;
-  z-index: 1;
-  top: -15px;
-  left: 82px;
 }
 
 
 
 
-
-
- .header{
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: space-around;
- margin: 10%;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-
-.Question{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.headerQDetails{
-  display: flex;
-  flex-direction: column;
-}
-
-.addAnswer{
-  margin-top: 20px;
-}
-
-.answer-title{
-  margin-top: 20%;
-  border: 1px solid black;
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 20%;
-}
-
-{/*QCards.js*/}
+/*QCards.js*/
 
 .SContainer{
   /* background: linear-gradient(to right top, #5574f7, #4086fd, #3196ff, #31a4ff, #42b2ff, #46b3ff, #4ab5ff, #4eb6ff, #46abff, #45a0ff, #4c94fd, #5887f9);*/
   /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);  */
 
+}
+
+.bubble 
+{
+position: relative;
+width: 400px;
+min-height: 200px;
+padding: 0px;
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+/* background: #E2E8ED; */
+background: linear-gradient(to right top, #5574f7, #4086fd, #3196ff, #31a4ff, #42b2ff, #46b3ff, #4ab5ff, #4eb6ff, #46abff, #45a0ff, #4c94fd, #5887f9);
+-webkit-border-radius: 70px;
+-moz-border-radius: 70px;
+border-radius: 70px;
+text-align: center;
+margin: 1rem;
+padding: 1rem;
+color: white;
+}
+.bubble:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 0;
+border-color:  #4086fd transparent;
+display: block;
+width: 0;
+z-index: 1;
+bottom: -15px;
+left: 110px;
 }
 
 .QlistC{
@@ -249,8 +225,11 @@ background: #FFFFFF;
 }
 
 .QlistC h2{
-  color: #5574F7;
+  color:white;
 }
+
+
+
 
 .SearchInput::placeholder{
   color: #60C3FF;
@@ -264,7 +243,7 @@ background: #FFFFFF;
   align-content: center;
   margin: 0 auto;
   margin-bottom: 15px;
-
+border-bottom: 2px solid #E2E8ED;
 }
 
 .Nav{
@@ -272,13 +251,13 @@ background: #FFFFFF;
   color:#60C3FF;
 
  
-  /* border-radius: 10px;  */
+  border-radius: 10px;  
   height: 40px;
   width: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
 }
 
 .Nav:hover {
@@ -316,7 +295,26 @@ border-color: transparent;
 background: transparent;
 /* border-bottom: 1px solid rgba(255, 255,255, .5);
 color: white; */
-border-bottom: 1px solid #60C3FF;
+/* border-bottom: 1px solid #60C3FF; */
+color: #60C3FF;
+font-family: 'Concert One', cursive;
+}
+
+.SearchInput2{
+  /* border-radius: 20px; */
+  height: 60px;
+  width: 60%;
+  /* margin-top: 8%; */
+
+  font-size: 1.2rem;
+  text-align: center;
+   outline: none;
+border: none transparent;
+border-color: transparent;
+background: transparent;
+ border-bottom: 1px solid  #4C5264;
+
+/* border-bottom: 1px solid #60C3FF; */
 color: #60C3FF;
 font-family: 'Concert One', cursive;
 }
@@ -326,7 +324,55 @@ font-family: 'Concert One', cursive;
   color: #60C3FF;
 }
 
-.DetailsLink{
-  text-decoration: none;
+.Qh3{
   color: #4C5264;
 }
+
+.SearchInput2::placeholder{
+  color: #5887F9;
+}
+.DetailsLink{
+  text-decoration: none;
+  color:rgba(255, 255,255, .5);
+}
+
+.DetailsLink:hover{
+  color: white;
+}
+
+.AuthorFooter{
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  color:#5574F7;
+justify-content: space-evenly;
+
+
+ width: 25%;
+}
+
+.authorDate{
+   /* border: 1px solid black} */
+}
+
+/*ASK A QUESTION (QAFORM)*/
+
+.blueHead{
+  width: 100%;
+  min-height: 150px;
+  color: #5887F9;
+  display: inline-block;
+  background: 
+ white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-bottom: 2px solid #E2E8ED;
+}
+
+/* .divider{
+  height: 75px;
+  width: 100%;
+  border-bottom: 2px solid #E2E8ED;
+} */

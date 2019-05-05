@@ -31,13 +31,16 @@ class SearchBar extends React.Component {
     return (
       <div className="Header">
         <div className="container">
-          <div className="logo" />
+       
           {path !== '/' && this.props.isAuthenticated && (
             <div className="SHeader">
-            
-              <NavLink className="Nav" onClick={this.onLogout} to="#">
+
+               <div className="logo">
+    <img className="iconL" src={require('./images/logoM.png')} />
+      </div> 
+              {/* <NavLink className="Nav" onClick={this.onLogout} to="#">
                  Log Out
-                </NavLink>
+                </NavLink>  */}
                 <NavLink className="Nav" activeClassName="ActNav"  exact to="/Question">Question Feed</NavLink>
                 <NavLink className="Nav"  activeClassName="ActNav" exact to="/QAform">Add Question</NavLink>
              
@@ -55,7 +58,8 @@ class SearchBar extends React.Component {
                   />
                 </div>
               </form>
-            </div>
+            
+            </div> 
           )}
         </div>
       </div>

@@ -8,7 +8,7 @@ import '../../App.css';
 class  QCardsList extends React.Component {
   render() {
   return  (
-    <div className="cardContainer">
+    <div className="cardContainer" >
 
 <div className="bubble" >
 
@@ -16,17 +16,14 @@ class  QCardsList extends React.Component {
       <Link className="DetailsLink" to={`/Question/${this.props.question.id}`}>
         <div className="Question">
 
-            <div className="header">
+            <div className="headerQ">
               <h2>{this.props.question.title}</h2>
           
-              <i class="far fa-folder-open fa-2x "></i>
+             
             </div>
             
-            <div className="body">
-              <p className="author">asked by • {this.props.question.author}</p>
-              <p>
-                on {moment(this.props.question.created_at).format('MMM Do YY')}
-              </p>
+            <div className="bodyQ">
+            
               </div>
               
               <div>
@@ -39,6 +36,13 @@ class  QCardsList extends React.Component {
                 </Link>
                 
               
+  </div>
+  <div className="AuthorFooter">
+  <p className="authorDate">Asked by • {this.props.question.author} On  {moment(this.props.question.created_at).format('MMM Do YY')}</p> 
+ 
+              {/* <p className="pMoment">
+                On {moment(this.props.question.created_at).format('MMM Do YY')}
+              </p> */}
   </div>
   </div>
   );
