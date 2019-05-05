@@ -11,7 +11,7 @@
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
-  display: inline-block;
+   display: inline-block; 
 }
 
 body{
@@ -155,25 +155,27 @@ color:  rgba(255, 255,255, .5);
 }
 
 .cardContainer{
-    display: flex;
+     display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-margin-top: 20px;  
+margin-top: 20px;    
 
-/* 
-display: flex;
+
+/* display: flex;
 flex-direction: row;
-justify-content: flex-start;
-flex-wrap: wrap;
-align-items: flex-start;
+ justify-content: flex-start; 
+ flex-wrap: wrap; 
+ align-items: flex-start; 
 margin-top: 20px; 
-width: 100%; */
-
+width: 100%;  
+border: 1px solid purple; */
 }
 
 
+.bubbleCon{
 
+}
 
 /*QCards.js*/
 
@@ -302,34 +304,42 @@ font-family: 'Concert One', cursive;
 
 .SearchInput2{
   /* border-radius: 20px; */
-  height: 60px;
-  width: 60%;
+  /* height: 200px; */
+  height: inherit;
+  width: 40%;
   /* margin-top: 8%; */
 
-  font-size: 1.2rem;
+  font-size: 3rem;
   text-align: center;
    outline: none;
 border: none transparent;
 border-color: transparent;
 background: transparent;
+ border: 1px solid red; 
  border-bottom: 1px solid  #4C5264;
 
 /* border-bottom: 1px solid #60C3FF; */
 color: #60C3FF;
 font-family: 'Concert One', cursive;
+padding-bottom: 0px;
+box-sizing: border-box;
+margin-top: 70px;
 }
 
 
-.form-content {
-  color: #60C3FF;
-}
+
 
 .Qh3{
   color: #4C5264;
+  margin-top: 70px;
+  border: 1px solid red;
 }
 
 .SearchInput2::placeholder{
   color: #5887F9;
+margin-bottom: 0px;
+/* border: 1px solid black; */
+
 }
 .DetailsLink{
   text-decoration: none;
@@ -376,3 +386,34 @@ justify-content: space-evenly;
   width: 100%;
   border-bottom: 2px solid #E2E8ED;
 } */
+
+.formWrap{
+  margin-top: 30px;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #FAFAFA;
+  width: 70%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+} 
+
+.formWrapC{
+  display: flex;
+  justify-content: center;
+
+}
+
+/* .AddQ{
+  display: flex;
+  flex-direction: column;
+} */
+
+.askB{
+  width: 15%;
+  margin-top: 170px;
+  height: 45px;
+  border: none;
+  color: #5574F7;
+  background: none;
+}
