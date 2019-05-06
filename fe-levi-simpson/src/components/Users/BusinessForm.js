@@ -67,7 +67,7 @@ postMessage = e => {
   e.preventDefault();
      this.props.regUser(this.state.credentials);
      setTimeout(() => {
-      this.props.history.push('/protected');
+      this.props.history.push('/');
     }, 1000);
    
     };
