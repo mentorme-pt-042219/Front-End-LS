@@ -43,6 +43,7 @@ class SearchBar extends React.Component {
                 </NavLink>  */}
                 <NavLink className="Nav" activeClassName="ActNav"  exact to="/Question">Question Feed</NavLink>
                 <NavLink className="Nav"  activeClassName="ActNav" exact to="/QAform">Add Question</NavLink>
+                <NavLink className="Nav"  activeClassName="ActNav" onClick={this.onLogout}>Log Out</NavLink>
              
             
               <form className="searchForm">
