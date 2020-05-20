@@ -75,7 +75,7 @@ class Register extends React.Component {
   postMessage = e => {
     e.preventDefault();
     this.props.regUser(this.state.credentials).then(() => {
-      this.props.history.push('/Questino');
+      this.props.history.push('/Question');
     })
 
   };
