@@ -63,14 +63,23 @@ class Register extends React.Component {
     }));
   };
 
+  // postMessage = e => {
+  //   e.preventDefault();
+  //   this.props.regUser(this.state.credentials);
+  //   setTimeout(() => {
+  //     this.props.history.push('/Question');
+  //   }, 1000);
+
+  // };
+
   postMessage = e => {
     e.preventDefault();
-    this.props.regUser(this.state.credentials);
-    setTimeout(() => {
-      this.props.history.push('/Question');
-    }, 1000);
+    this.props.regUser(this.state.credentials).then(() => {
+      this.props.history.push('/Questino');
+    })
 
   };
+
 
   render() {
     const { classes } = this.props;
