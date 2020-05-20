@@ -9,8 +9,8 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router'
 import { connect } from "react-redux";
-import {postMessage} from "../../actions/index";
-import {regUser} from "../../actions/index";
+import { postMessage } from "../../actions/index";
+import { regUser } from "../../actions/index";
 
 const styles = theme => ({
   container: {
@@ -22,7 +22,7 @@ const styles = theme => ({
     alignContent: 'center',
     marginLeft: 200,
     marginRight: 200,
-    
+
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -43,88 +43,88 @@ const styles = theme => ({
 
 class Register extends React.Component {
   state = {
-   credentials:{
-handle:"",
-email:"",
-password:""
-  // Files:"",
-}
+    credentials: {
+      handle: "",
+      email: "",
+      password: ""
+      // Files:"",
+    }
   }
 
 
-handleChange = e => {
-  e.persist();
-  let value = e.target.value;
-  this.setState(prevState => ({
-     credentials: {
-          ...prevState.credentials,
-          [e.target.name]: value
+  handleChange = e => {
+    e.persist();
+    let value = e.target.value;
+    this.setState(prevState => ({
+      credentials: {
+        ...prevState.credentials,
+        [e.target.name]: value
       }
     }));
-};
+  };
 
-postMessage = e => {
-  e.preventDefault();
-     this.props.regUser(this.state.credentials);
-     setTimeout(() => {
-      this.props.history.push('/');
+  postMessage = e => {
+    e.preventDefault();
+    this.props.regUser(this.state.credentials);
+    setTimeout(() => {
+      this.props.history.push('/Question');
     }, 1000);
-   
-    };
- 
-    render() {
+
+  };
+
+  render() {
     const { classes } = this.props;
 
     return (
       <div className="LWrapper">
-      <div className="Login">
-      <h1 className="h1Login">
-   Register
+        <div className="Login">
+          <h1 className="h1Login">
+            Register
     </h1>
- 
-      <form onSubmit={this.postMessage}>
-      <div className="loginInputC">
-      <input className="loginInput"
-        type="text"
-        
-          name="handle"
-          placeholder="User Name"
-          value={this.state.credentials.handle}
-          onChange={this.handleChange}
-        
-        />
 
-<input className="loginInput"
-    type="text"
-          label="email"
-          name="email"
-          placeholder="Email"
-          value={this.state.credentials.email}
-          onChange={this.handleChange}
-        
-        />
+          <form onSubmit={this.postMessage}>
+            <div className="loginInputC">
+              <input className="loginInput"
+                type="text"
 
-<input className="loginInput"
-       id="outlined-name"
-        type="password"
-          name="password"
-          placeholder="Password"
-          value={this.state.credentials.password}
-          onChange={this.handleChange}
-      
-        />
-</div>
+                name="handle"
+                placeholder="User Name"
+                value={this.state.credentials.handle}
+                onChange={this.handleChange}
 
-<input className="signupB" type="submit" value="Register" onClick={this.postMessage}/>
-      </form>
-      </div>
+              />
+
+              <input className="loginInput"
+                type="text"
+                label="email"
+                name="email"
+                placeholder="Email"
+                value={this.state.credentials.email}
+                onChange={this.handleChange}
+
+              />
+
+              <input className="loginInput"
+                id="outlined-name"
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={this.state.credentials.password}
+                onChange={this.handleChange}
+
+              />
+            </div>
+
+            <input className="signupB" type="submit" value="Register" onClick={this.postMessage} />
+          </form>
+        </div>
       </div>
     );
   }
 
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {};
 }
 
@@ -132,5 +132,5 @@ function mapStateToProps (state) {
 
 export default connect(
   mapStateToProps,
-  {regUser } 
+  { regUser }
 )((withStyles(styles)(Register)));
