@@ -14,6 +14,8 @@ import { regUser } from "../../actions/index";
 import styled from "styled-components";
 import {history} from "../../App";
 
+import mentor from '../../assets/mentorLanding.png'
+
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -85,49 +87,52 @@ class Register extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className="LWrapper">
-        <div className="Login">
-          <h1 className="h1Login">
-            Register
-    </h1>
+      <Landing>
+        <LandingDivider>
+          <LandingTitleHalf>
+            <LoginForm>
+              <label>
+                User Name
+              </label>
+              <input type= "text" 
+               name="handle"
+               placeholder="User Name"
+               value={this.state.credentials.handle}
+               onChange={this.handleChange}
+              />
+              <label>
+                Email
+              </label>
+              <input type= "text" 
+               type="text"
+               label="email"
+               name="email"
+               placeholder="Email"
+               value={this.state.credentials.email}
+               onChange={this.handleChange}
+              />
 
-          <form onSubmit={this.postMessage}>
-            <div className="loginInputC">
-              <input className="loginInput"
-                type="text"
-
-                name="handle"
-                placeholder="User Name"
-                value={this.state.credentials.handle}
-                onChange={this.handleChange}
+<label>
+             Password
+              </label>
+              <input type= "text" 
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={this.state.credentials.password}
+              onChange={this.handleChange}
 
               />
 
-              <input className="loginInput"
-                type="text"
-                label="email"
-                name="email"
-                placeholder="Email"
-                value={this.state.credentials.email}
-                onChange={this.handleChange}
+<FormButton type="submit" value="Register" onClick={this.postMessage}>Register</FormButton>
+            </LoginForm>
 
-              />
+          </LandingTitleHalf>
+        </LandingDivider>
+      </Landing>
 
-              <input className="loginInput"
-                id="outlined-name"
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.credentials.password}
-                onChange={this.handleChange}
-
-              />
-            </div>
-
-            <RegisterButton to={"/Question"}className="signupB" type="submit" value="Register" onClick={this.postMessage}>Register</RegisterButton>
-          </form>
-        </div>
-      </div>
+        
+         
     );
   }
 
@@ -154,3 +159,72 @@ border-radius: 0 10px 10px 0;
 
 padding: 30px 3rem 15px 3rem;
 `;
+
+const Wrapper = styled.div`
+width: 100%;
+height: 100%;
+//  border: 1px solid black;
+
+`;
+
+const Landing= styled.div`
+background-image: url(${mentor});
+background-position: top 10% right 5%;
+background-repeat: no-repeat;
+//  border: 1px solid purple
+padding: 0 0 0 0;
+width: 100%;
+height: 100%;
+// border: 1px solid red;
+`;
+
+const LandingDivider=styled.div`
+display: flex;
+flex-direction: row;
+color: #1F66E8;
+width: 50%;
+`;
+
+ const LandingTitleHalf=styled.div`
+ 
+ width: 60%;
+ font-size: 3rem;
+ color: black;
+ text-align:left;
+ font-weight: bold;
+ `;
+
+ const LoginForm = styled.form`
+//  border: 1px solid red;
+ margin-top: 150px;
+width: 100%;
+ text-align:left;
+ display: flex;
+flex-direction: column;
+justify-content: flex-start;
+background: white;
+// box-shadow: 0 3px 5px 3px  rgba(0, 0, 0, 0.16); 
+padding: .8rem;
+margin-left: 200px;
+input{
+  margin: .5rem;  
+ border-radius: 5px;
+height: 35px;
+ text-decoration: none;
+ 
+}
+label{
+  margin: .5rem;
+font-size: 1.6rem;
+}
+ `;
+
+
+ const FormButton=styled.button`
+ border-radius: 10px;
+  background: #B1DCE8;
+  border: 1px solid #B1DCE8;
+  width: 30%;
+  color: black;
+  height: 50px;
+ `;
