@@ -7,10 +7,12 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import { withRouter } from 'react-router'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from "react-redux";
 import { postMessage } from "../../actions/index";
 import { regUser } from "../../actions/index";
+import styled from "styled-components";
+import {history} from "../../App";
 
 const styles = theme => ({
   container: {
@@ -73,11 +75,9 @@ class Register extends React.Component {
   // };
 
   postMessage = e => {
-    e.preventDefault();
-    this.props.regUser(this.state.credentials).then(() => {
-      this.props.history.push('/Question');
-    })
-
+    // e.preventDefault();
+    this.props.regUser(this.state.credentials)
+    history.push("./Question")
   };
 
 
@@ -124,7 +124,7 @@ class Register extends React.Component {
               />
             </div>
 
-            <input className="signupB" type="submit" value="Register" onClick={this.postMessage} />
+            <RegisterButton to={"/Question"}className="signupB" type="submit" value="Register" onClick={this.postMessage}>Register</RegisterButton>
           </form>
         </div>
       </div>
@@ -143,3 +143,14 @@ export default connect(
   mapStateToProps,
   { regUser }
 )((withStyles(styles)(Register)));
+
+
+const RegisterButton = styled(Link)`
+color: white;
+text-decoration: none;
+font-size: 3rem;
+font-weight: bold;
+border-radius: 0 10px 10px 0;
+
+padding: 30px 3rem 15px 3rem;
+`;

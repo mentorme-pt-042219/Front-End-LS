@@ -1,11 +1,14 @@
+
 import axios from 'axios';
 import axiosWithAuth from '../components/utils/axiosAuth';
+
 
 // const token= 'lambda100500900';
 
 export const REG_START ="REG_START";
 export const REG_SUCCESS = "REG_SUCCESS";
 export const REG_FAILURE= "REG_FAILURE";
+
 
 export const regUser = creds => dispatch => {
   dispatch({type: REG_START});
@@ -15,6 +18,7 @@ export const regUser = creds => dispatch => {
 
     .then(res => {
       dispatch({type: REG_SUCCESS, payload: res.data});
+    
     })
     .catch(err => dispatch({type: REG_FAILURE, payload: err}));
 };
