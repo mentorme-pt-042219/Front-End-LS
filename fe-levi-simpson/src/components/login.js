@@ -117,7 +117,7 @@ export default connect(
 const Wrapper = styled.div`
 width: 100%;
 height: 100%;
- 
+//  border: 1px solid black;
 
 `;
 
@@ -128,11 +128,9 @@ background-repeat: no-repeat;
  
 padding: 0 0 0 0;
 width: 100%;
-height: 70%;
+height: 100%;
+// border: 1px solid red;
+`;
+
+
  
-`;
-
-
-const LandingImg= styled.div`
-
-`;
