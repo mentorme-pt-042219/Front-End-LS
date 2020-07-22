@@ -66,7 +66,7 @@ return (
   <div className="LWrapper"> */}
   <Landing>
  <LandingDivider>
-<LandingTitleHalf>
+<LandingTitleHalf1>
  <h1>
    MentorMe
    </h1>
@@ -77,7 +77,7 @@ return (
    Connect with Mentors.
    </h2>
  
-</LandingTitleHalf>
+</LandingTitleHalf1>
 
 
 
@@ -153,12 +153,21 @@ width: 50%;
  const LandingTitleHalf=styled.div`
  
  width: 60%;
- font-size: 2rem;
+ font-size: 1.5rem;
  color: black;
  text-align:left;
  font-weight: bold;
  margin-left: 10rem;
  margin-top: 100px;
+
+
+ `;
+
+ const LandingTitleHalf1 = styled(LandingTitleHalf)`
+ width: 44%;
+ @media(max-width: 500){
+  display: none;
+}
  `;
 
  const LoginForm = styled.form`
