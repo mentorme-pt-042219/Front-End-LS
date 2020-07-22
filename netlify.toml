@@ -2,7 +2,7 @@
 [build]
   base    = "./fe-levi-simpson"
   publish = "./fe-levi-simpson/build"
-  command = "yarn build"
+  command = "CI=yarn build"
 
 
     [[redirects]]
