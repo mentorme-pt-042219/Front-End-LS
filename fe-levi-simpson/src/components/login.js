@@ -108,37 +108,7 @@ return (
 
  
 
-{/* <div className= "signHeader"> */}
-{/* <div className="logo">
-    <img className="iconL" src={require('./images/icon.png')} />
-      </div> */}
-  
-{/* <h1 className="h1Login">Sign In</h1>
- 
-  <form  onSubmit={this.login}>
-<div className="loginInputC">
-      <input className="loginInput"
-            type="text"
-            name="handle"
-            placeholder="User Name"
-            value={this.state.credentials.username}
-            onChange={this.handleChange}
-            margin="normal"
-            variant="outlined"
-          />
-       <input  className="loginInput"
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.credentials.password}
-            onChange={this.handleChange}
-            margin="normal"
-            variant="outlined"
-          />
-          </div>
-    <input className="signupB" type="submit" value="SIGN IN" onClick={this.login}/>
-<p className="loginText">Don't Have An Account? <Link to='/register' className="registerLink">REGISTER </Link></p>
-</form> */}
+
  
   {/* </div> */}
   </Landing>
@@ -183,10 +153,12 @@ width: 50%;
  const LandingTitleHalf=styled.div`
  
  width: 60%;
- font-size: 3rem;
+ font-size: 2rem;
  color: black;
  text-align:left;
  font-weight: bold;
+ margin-left: 10rem;
+ margin-top: 100px;
  `;
 
  const LoginForm = styled.form`
@@ -200,7 +172,7 @@ justify-content: flex-start;
 background: white;
 // box-shadow: 0 3px 5px 3px  rgba(0, 0, 0, 0.16); 
 padding: .8rem;
-margin-left: 200px;
+margin-right: 100px;
 input{
   margin: .5rem;  
  border-radius: 5px;
@@ -212,6 +184,7 @@ label{
   margin: .5rem;
 font-size: 1.6rem;
 }
+ 
  `;
 
 
