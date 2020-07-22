@@ -40,11 +40,11 @@ class App extends React.Component {
 
          <Route  exact path="/register" component={Register}/>
          <Route  exact path="/Question" component={QuestionCards}/>
-         <PrivateRoute exact path="/QAform" component={QAform}/>
+         <Route exact path="/QAform" component={QAform}/>
      
-  <PrivateRoute exact path="/EditQuestion/:id" component={UpdateQuestion}/>
-           <PrivateRoute path="/Question/:id" component ={QuestionDetails}/>
-           <PrivateRoute path="/Question/:id/add-comment" component ={AddAnswer}/>
+  <Route exact path="/EditQuestion/:id" component={UpdateQuestion}/>
+           <Route path="/Question/:id" component ={QuestionDetails}/>
+           <Route path="/Question/:id/add-comment" component ={AddAnswer}/>
     
            
             </div>
