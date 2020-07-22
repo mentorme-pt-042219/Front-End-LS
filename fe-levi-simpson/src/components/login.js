@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import { login } from '../actions/index';
 import { withStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
+
+import mentor from '../assets/mentorLanding.png'
 
 const styles = theme => ({
   container: {
@@ -57,19 +60,20 @@ login = e => {
 render() {
   const { classes } = this.props;
 return (
-  <div>
+<Wrapper>
    
-  
-  <div className="LWrapper">
-<div className="Login">
+{/*   
+  <div className="LWrapper"> */}
+  <Landing>
+ 
 
 {/* <div className= "signHeader"> */}
 {/* <div className="logo">
     <img className="iconL" src={require('./images/icon.png')} />
       </div> */}
   
-<h1 className="h1Login">Sign In</h1>
-{/* </div> */}
+{/* <h1 className="h1Login">Sign In</h1>
+ 
   <form  onSubmit={this.login}>
 <div className="loginInputC">
       <input className="loginInput"
@@ -93,10 +97,11 @@ return (
           </div>
     <input className="signupB" type="submit" value="SIGN IN" onClick={this.login}/>
 <p className="loginText">Don't Have An Account? <Link to='/register' className="registerLink">REGISTER </Link></p>
-</form>
-  </div>
-  </div>
-  </div>
+</form> */}
+ 
+  {/* </div> */}
+  </Landing>
+  </Wrapper>
 )
 
 }
@@ -107,3 +112,27 @@ export default connect(
   null,
   {login}
 )(Login);
+
+
+const Wrapper = styled.div`
+width: 100%;
+height: 100%;
+ 
+
+`;
+
+const Landing= styled.div`
+background-image: url(${mentor});
+background-position: right;
+background-repeat: no-repeat;
+ 
+padding: 0 0 0 0;
+width: 100%;
+height: 70%;
+ 
+`;
+
+
+const LandingImg= styled.div`
+
+`;
